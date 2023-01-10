@@ -9,12 +9,17 @@ public class player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private BoxCollider2D Feet;
+    private ParticleSystem playerPS;
+    public GameObject dashObj;
     public float playerSpeed = 4f;
     public float jumpforce;
-    public float doublejumpforce;
+    public float dashSpeed;
+    public float dashTime;
+    private float startDashTimer;//计时
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
     private float jumpPreinput = 0f;
+    public bool isDashing=false;//判断是否处于冲刺状态
 
     private float facedirection;
     void Start()
@@ -22,12 +27,14 @@ public class player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         Feet = GetComponent<BoxCollider2D>();
+        playerPS = GameObject.FindGameObjectWithTag("Player").GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
+        Dash();
     }
 
     private void FixedUpdate()//固定刷新率。0.02s刷新一次,无敌时间，冷却时间，预输入部分
@@ -44,6 +51,7 @@ public class player : MonoBehaviour
         if (facedirection != 0 && facedirection * this.transform.localScale.x < 0)//
         {
             transform.localScale = new Vector3(facedirection * Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, 1);
+            PPS();
         }
         //控制移动
         if (horizontalmove != 0)//控制移动
@@ -58,7 +66,37 @@ public class player : MonoBehaviour
         if (jumpPreinput > 0.1f && isGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
+            PPS();
             anim.SetBool("jumping", true);
         }
     }
+    void PPS()//灰尘粒子
+    {
+        playerPS.Play();
+    }
+    void Dash()
+    {
+        if (!isDashing)
+        {
+            if (Input.GetButtonDown("dash"))
+            {
+                dashObj.SetActive(true);
+                isDashing = true;
+                startDashTimer = dashTime;
+            }
+        }
+        else
+        {
+            startDashTimer -= Time.deltaTime;
+            if (startDashTimer <= 0)
+            {
+                isDashing = false;
+                dashObj.SetActive(false);
+            }
+            else
+            {
+                rb.velocity = new Vector2(rb.velocity.x*dashSpeed, rb.velocity.y);
+            }
+        }
+    } 
 }
