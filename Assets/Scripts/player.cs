@@ -15,11 +15,13 @@ public class player : MonoBehaviour
     public float jumpforce;
     public float dashSpeed;
     public float dashTime;
+    private float hideTimer = 0f;//计时器
+    private float suspendTime = 0.5f;//悬浮时间
     private float startDashTimer;//计时
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
     private float jumpPreinput = 0f;
-    public bool isDashing=false;//判断是否处于冲刺状态
+    public bool isDashing = false;//判断是否处于冲刺状态
 
     private float facedirection;
     void Start()
@@ -35,6 +37,7 @@ public class player : MonoBehaviour
     {
         Movement();
         Dash();
+        Suspend();
     }
 
     private void FixedUpdate()//固定刷新率。0.02s刷新一次,无敌时间，冷却时间，预输入部分
@@ -99,4 +102,19 @@ public class player : MonoBehaviour
             }
         }
     } 
+
+    void Suspend() //悬浮
+    {
+        if (!isGround && Input.GetButtonDown("Suspend"))
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
+            hideTimer = Time.time + suspendTime;//经过悬浮时间后
+
+        }
+        if (Time.time >= hideTimer)
+        {
+            rb.constraints = RigidbodyConstraints2D.None;//解冻
+        }
+    }
+     
 }
