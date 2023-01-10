@@ -95,7 +95,7 @@ public class player : MonoBehaviour
             }
             else
             {
-                rb.velocity = new Vector2(rb.velocity.x*dashSpeed, rb.velocity.y);
+                rb.velocity = new Vector2(this.transform.localScale.x * dashSpeed * playerSpeed, rb.velocity.y) ;
             }
         }
     } 

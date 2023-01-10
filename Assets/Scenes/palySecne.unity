@@ -5199,8 +5199,8 @@ MonoBehaviour:
   dashObj: {fileID: 836058336}
   playerSpeed: 4
   jumpforce: 8
-  dashSpeed: 5
-  dashTime: 0.2
+  dashSpeed: 4
+  dashTime: 0.15
   isDashing: 0
 --- !u!61 &1377178201
 BoxCollider2D:
