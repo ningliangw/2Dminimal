@@ -11,6 +11,8 @@ public class player : MonoBehaviour
     private BoxCollider2D Feet;
     private ParticleSystem playerPS;
     public GameObject dashObj;
+    public GameObject body;
+    public GameObject enemy;
     public AudioSource JumpMusic;
     public float playerSpeed = 4f;
     public float jumpforce;
@@ -20,8 +22,10 @@ public class player : MonoBehaviour
     private float hideTimer = 0f;//计时器
     private float suspendTime = 0.5f;//悬浮时间
     private float startDashTimer;//计时
+    private float defendTime = 3f;//无敌时间
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
+    private bool isDefend = false;//判断是否无敌
     private float jumpPreinput = 0f;
     private bool isDashing = false;//判断是否处于冲刺状态
 
@@ -47,6 +51,15 @@ public class player : MonoBehaviour
     private void FixedUpdate()//固定刷新率。0.02s刷新一次,无敌时间，冷却时间，预输入部分
     {
         if (jumpPreinput > 0.08f) { jumpPreinput -= 0.02f; }
+        if (isDefend)
+        {
+            Physics.IgnoreCollision(body.GetComponent<Collider>(), enemy.GetComponent<Collider>());
+            defendTime -= Time.deltaTime;
+            if (defendTime <= 0)
+            {
+                isDefend = false;
+            }
+        }
     }
     void Movement()
     {
