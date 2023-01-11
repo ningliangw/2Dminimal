@@ -10,7 +10,7 @@ public class IdleState : IState//¿ÕÏĞ×´Ì¬
     public IdleState(FSM manager)
     {
         this.manager = manager;
-        this.parameter = parameter;
+        this.parameter = manager.parameter;
     }
     public void OnEnter()//½øÈë
     {

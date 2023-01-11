@@ -10,7 +10,7 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
     public PatrolState(FSM manager)
     {
         this.manager = manager;
-        this.parameter = parameter;
+        this.parameter = manager.parameter;
     }
     public void OnEnter()//½øÈë
     {
@@ -22,7 +22,7 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
 
         manager.transform.position = Vector2.MoveTowards(manager.transform.position, 
             parameter.patrolPoints[patrolPosition].position, parameter.moveSpeed * Time.deltaTime);//µÐÈËÒÆ¶¯µ½Ñ²Âßµã
-        if (Vector2.Distance(manager.transform.position, parameter.patrolPoints[patrolPosition].position) < 0.1f)
+        if (Vector2.Distance(manager.transform.position, parameter.patrolPoints[patrolPosition].position) < 1f)
         {
             manager.TransitionState(StateType.Idle);//×ª»»³É¿ÕÏÐ×´Ì¬
         }

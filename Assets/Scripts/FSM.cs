@@ -32,6 +32,8 @@ public class FSM : MonoBehaviour//有限状态机
         states.Add(StateType.Idle, new IdleState(this));//添加状态
         states.Add(StateType.Patrol, new PatrolState(this));
 
+        transform.DetachChildren();
+
         TransitionState(StateType.Idle);//初始状态为idle
 
         parameter.anim = GetComponent<Animator>();
@@ -59,11 +61,11 @@ public class FSM : MonoBehaviour//有限状态机
         {
             if (transform.position.x > target .position.x)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
             else if (transform.position.x < target.position.x)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
         }
     }
