@@ -18,7 +18,6 @@ public class player : MonoBehaviour
     public float jumpforce;
     public float dashSpeed;
     public float dashTime;
-    public int collectionsget = 0;//收集数
     private int canSuspend = 0;//悬浮判断
     private float hideTimer = 0f;//计时器
     private float suspendTime = 0.5f;//悬浮时间
@@ -109,14 +108,12 @@ public class player : MonoBehaviour
         {
             anim.SetBool("falling", false);
             anim.SetBool("onGround", true);
-            PPS();
         }else   if (anim.GetBool("onGround"))
         {
            AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.2f)
             {
                 anim.SetBool("onGround", false);
-                canSuspend = 0;
             }
         }
         if (isHurt)

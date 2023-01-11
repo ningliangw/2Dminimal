@@ -14,6 +14,7 @@ public class Enemy_1 : Enemy
     public Transform leftPos, rightPos;
     void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody2D>();
         transform.DetachChildren();
         leftx = leftPos.position.x;
@@ -25,6 +26,7 @@ public class Enemy_1 : Enemy
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         Movement();
     }
 
