@@ -95,12 +95,14 @@ public class player : MonoBehaviour
         {
             anim.SetBool("falling", false);
             anim.SetBool("onGround", true);
+            PPS();
         }else   if (anim.GetBool("onGround"))
         {
            AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.2f)
             {
                 anim.SetBool("onGround", false);
+                canSuspend = 0;
             }
         }
         if (isHurt)
