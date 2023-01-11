@@ -3,16 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - playerDash
+  - CameraShake
+  - player
+  - enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ground
   - Water
   - UI
-  - 
-  - 
+  - player
+  - enemy
   - 
   - 
   - 
