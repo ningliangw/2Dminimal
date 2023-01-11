@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-
+        GameController.camShake = GameObject.FindGameObjectWithTag("CameraShake").GetComponent<CameraShake>();
     }
 
     void FixedUpdate()

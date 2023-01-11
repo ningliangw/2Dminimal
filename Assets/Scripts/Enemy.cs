@@ -26,5 +26,6 @@ public class Enemy : MonoBehaviour
     protected void TakeDamage(int damage)
     {
         health -= damage;
+        GameController.camShake.Shake();
     }
 }
