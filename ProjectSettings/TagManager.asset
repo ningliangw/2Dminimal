@@ -3,16 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - playerDash
+  - player
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ground
   - Water
   - UI
-  - 
-  - 
+  - player
+  - enemy
   - 
   - 
   - 
@@ -41,9 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: background
-    uniqueID: 876366611
+  - name: player
+    uniqueID: 2300260829
     locked: 0
-  - name: frountground
-    uniqueID: 2979332877
+  - name: New Layer
+    uniqueID: 4211786879
     locked: 0
