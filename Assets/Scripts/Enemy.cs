@@ -7,21 +7,26 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     private Animator anim;
-    public int health;
    // public GameObject sceneTransform;//�Ʒ�
-    private Rigidbody2D rb;
-    public float DieTime;
-    public int score;
-    public bool HaveTaken = false;
-    private Transform playertransform;
-    public AudioSource deathaudio;
-    private bool isdied = false;
+    public AudioSource deathAudio;
+    public int health;
     public int damage;
+    public int score;
+    public float DieTime;
+    public bool HaveTaken = false;
 
-         void Start()
+    private Rigidbody2D rb;
+    private Transform playertransform;
+    private playerHealth playerHealth;
+    private bool isdied = false;
+
+    void Start()
     {
-        playertransform = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        deathAudio = GetComponent<AudioSource>();
+        playertransform = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<playerHealth>();
     }
 
     void Update()
@@ -44,20 +49,20 @@ public class Enemy : MonoBehaviour
     void Isdie()
     {
         if (health <= 0 && !HaveTaken)
-            {
+        {
             rb.velocity = new Vector2(0, 0);
-                anim.SetTrigger("die");
-                deathaudio.Play();
+            anim.SetTrigger("die");
+            deathAudio.Play();
             Invoke("Killer", DieTime);//
             HaveTaken = true;
             player x = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
             x.collectionsget += score;
-                int y = x.collectionsget;
-                if (y > 27)
-                {
-                    //            sceneTransform.GetComponent<scenetransform>().enabled = true;
-                }
+            int y = x.collectionsget;
+            if (y > 27)
+            {
+                //            sceneTransform.GetComponent<scenetransform>().enabled = true;
             }
+        }
     }
     void Killer()
     {

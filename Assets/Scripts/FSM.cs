@@ -17,6 +17,7 @@ public class Parameter
     public float idleTime;
     public Transform[] patrolPoints;//巡逻点
     public Transform[] chasePoints; //追踪点
+    public Transform target;
     public Animator anim;
 }
 
@@ -31,6 +32,7 @@ public class FSM : MonoBehaviour//有限状态机
     {
         states.Add(StateType.Idle, new IdleState(this));//添加状态
         states.Add(StateType.Patrol, new PatrolState(this));
+        states.Add(StateType.Chase, new ChaseState(this));
 
         transform.DetachChildren();
 
