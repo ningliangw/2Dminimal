@@ -7,7 +7,7 @@ TagManager:
   - playerDash
   - CameraShake
   - player
-  - enemy
+  - enemies
   layers:
   - Default
   - TransparentFX
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: frountground
     uniqueID: 2979332877
+    locked: 0
+  - name: player
+    uniqueID: 860217941
     locked: 0
