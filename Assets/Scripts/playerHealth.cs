@@ -10,7 +10,6 @@ public class playerHealth : MonoBehaviour
     public float Time;
     private bool isdied = false;
     private int maxHP;
-    // Start is called before the first frame update
     private Renderer myRender;
     void Start()
     {

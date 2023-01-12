@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     private Animator anim;
     public int health;
-    public GameObject sceneTransform;//�Ʒ�
+   // public GameObject sceneTransform;//�Ʒ�
     private Rigidbody2D rb;
     public float DieTime;
     public int score;
@@ -48,15 +48,15 @@ public class Enemy : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
                 anim.SetTrigger("die");
                 deathaudio.Play();
-                player x = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
-                x.collectionsget += score;
+            Invoke("Killer", DieTime);//
+            HaveTaken = true;
+            player x = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
+            x.collectionsget += score;
                 int y = x.collectionsget;
                 if (y > 27)
                 {
                     //            sceneTransform.GetComponent<scenetransform>().enabled = true;
                 }
-                Invoke("Killer", DieTime);//
-                HaveTaken = true;
             }
     }
     void Killer()
