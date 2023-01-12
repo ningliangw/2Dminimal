@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 130807477}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: patrolLeft
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -162,8 +162,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 199241229}
-  m_Layer: 7
+<<<<<<< Updated upstream
+  m_Layer: 0
   m_Name: 1_
+=======
+  m_Layer: 7
+  m_Name: crycry_patrol
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 260169747}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: chaseLeft
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -226,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 560500345}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +372,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1994706467
-  m_SortingLayer: 0
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -5157,9 +5162,15 @@ GameObject:
   - component: {fileID: 1009729811}
   - component: {fileID: 1009729810}
   - component: {fileID: 1009729812}
-  - component: {fileID: 1009729813}
-  m_Layer: 7
+<<<<<<< Updated upstream
+  m_Layer: 0
   m_Name: 1
+=======
+  - component: {fileID: 1009729813}
+  - component: {fileID: 1009729814}
+  m_Layer: 7
+  m_Name: crycry
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5173,7 +5184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009729807}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -427.77, y: -253.85, z: 23.246992}
+  m_LocalPosition: {x: -428, y: -251.84, z: 23.246992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560500345}
@@ -5219,7 +5230,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e92527f6d0fe45342ab542b47346d45f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83fbb04121e839e46a76573dfdea40ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5243,18 +5254,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.113928616, y: -0.15347657}
+  m_Offset: {x: -0.2961483, y: -0.4659562}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.9, y: 2.22}
+    oldSize: {x: 6.875, y: 6.875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7379292, y: 1.7311485}
+  m_Size: {x: 5.017872, y: 5.88033}
   m_EdgeRadius: 0
 --- !u!50 &1009729811
 Rigidbody2D:
@@ -5300,7 +5311,10 @@ MonoBehaviour:
     chasePoints:
     - {fileID: 260169747}
     - {fileID: 1905332007}
+<<<<<<< Updated upstream
     anim: {fileID: 0}
+=======
+    anim: {fileID: 1009729814}
 --- !u!114 &1009729813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5313,13 +5327,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3976530c8f25ba341963d7a0d278c9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
   sceneTransform: {fileID: 0}
-  DieTime: 1
-  score: 0
-  HaveTaken: 0
-  deathaudio: {fileID: 0}
+  deathAudio: {fileID: 0}
+  health: 2
   damage: 0
+  score: 0
+  DieTime: 1
+  HaveTaken: 0
+--- !u!95 &1009729814
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009729807}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0823cecb13192e5408121e687080c30c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+>>>>>>> Stashed changes
 --- !u!1 &1181239517
 GameObject:
   m_ObjectHideFlags: 0
@@ -5432,7 +5466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1251811719}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: patrolRight
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -5468,10 +5502,9 @@ GameObject:
   - component: {fileID: 1377178201}
   - component: {fileID: 1377178197}
   - component: {fileID: 1377178202}
-  - component: {fileID: 1377178203}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: player
-  m_TagString: player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5506,7 +5539,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1377178195}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0e436d5c18caf784e80208e8561ec64f, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5614,7 +5647,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1994706467
-  m_SortingLayer: 0
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7baee2a60bd2b614482378425908fb6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5635,7 +5668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377178195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: 1.87, z: 0}
+  m_LocalPosition: {x: -2.47, y: 1.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2108987970}
@@ -5656,14 +5689,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashObj: {fileID: 836058336}
-  body: {fileID: 0}
-  enemy: {fileID: 0}
   JumpMusic: {fileID: 0}
   playerSpeed: 6
   jumpforce: 18
   dashSpeed: 5.5
   dashTime: 0.2
-  collectionsget: 0
 --- !u!61 &1377178201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5677,7 +5707,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05051899, y: -2.6979716}
+  m_Offset: {x: -0.05051899, y: -2.692069}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5688,7 +5718,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.041038, y: 0.4974141}
+  m_Size: {x: 3.041038, y: 0.48560905}
   m_EdgeRadius: 0
 --- !u!95 &1377178202
 Animator:
@@ -5709,22 +5739,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1377178203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377178195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dac9ad319296683439354af6643039da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DieTime: 0
-  HP: 3
-  Blinks: 2
-  Time: 0.2
 --- !u!1 &1600489842
 GameObject:
   m_ObjectHideFlags: 0
@@ -5957,7 +5971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1905332007}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: chaseRight
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -6049,7 +6063,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1994706467
-  m_SortingLayer: 0
+  m_SortingLayer: 1
   m_SortingOrder: -1
   m_RenderMode: 0
   m_SortMode: 0
