@@ -6,6 +6,8 @@ TagManager:
   tags:
   - playerDash
   - CameraShake
+  - player
+  - enemies
   layers:
   - Default
   - TransparentFX
@@ -13,8 +15,8 @@ TagManager:
   - ground
   - Water
   - UI
-  - Player
-  - Enemy
+  - player
+  - enemy
   - 
   - 
   - 
@@ -43,9 +45,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: player
-    uniqueID: 2300260829
+  - name: background
+    uniqueID: 876366611
     locked: 0
-  - name: New Layer
-    uniqueID: 4211786879
+  - name: gound
+    uniqueID: 187992291
+    locked: 0
+  - name: frountground
+    uniqueID: 2979332877
+    locked: 0
+  - name: player
+    uniqueID: 860217941
+    locked: 0
+  - name: enemy
+    uniqueID: 1199571271
     locked: 0

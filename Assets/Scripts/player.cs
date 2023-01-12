@@ -11,17 +11,22 @@ public class player : MonoBehaviour
     private BoxCollider2D Feet;
     private ParticleSystem playerPS;
     public GameObject dashObj;
+    public GameObject body;
+    public GameObject enemy;
     public AudioSource JumpMusic;
     public float playerSpeed = 4f;
     public float jumpforce;
     public float dashSpeed;
     public float dashTime;
+    public int collectionsget = 0;
     private int canSuspend = 0;//悬浮判断
     private float hideTimer = 0f;//计时器
     private float suspendTime = 0.5f;//悬浮时间
     private float startDashTimer;//计时
+    private float defendTime = 3f;//无敌时间
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
+    private bool isDefend = false;//判断是否无敌
     private float jumpPreinput = 0f;
     private bool isDashing = false;//判断是否处于冲刺状态
 
@@ -44,9 +49,19 @@ public class player : MonoBehaviour
         falljudge();
     }
 
+
     private void FixedUpdate()//固定刷新率。0.02s刷新一次,无敌时间，冷却时间，预输入部分
     {
         if (jumpPreinput > 0.08f) { jumpPreinput -= 0.02f; }
+       if (isDefend)
+        {
+            Physics.IgnoreCollision(body.GetComponent<Collider>(), enemy.GetComponent<Collider>());
+            defendTime -= 0.02f;
+            if (defendTime <= 0)
+            {
+                isDefend = false;
+            }
+        }
     }
     void Movement()
     {
@@ -95,12 +110,15 @@ public class player : MonoBehaviour
         {
             anim.SetBool("falling", false);
             anim.SetBool("onGround", true);
-        }else   if (anim.GetBool("onGround"))
+            PPS();
+        }
+        else   if (anim.GetBool("onGround"))
         {
            AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.2f)
             {
                 anim.SetBool("onGround", false);
+                canSuspend = 0;
             }
         }
         if (isHurt)
@@ -162,4 +180,20 @@ public class player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)//碰撞触发器
+    {
+       if (collision.gameObject.CompareTag("enemies"))
+        {
+            isHurt = true;
+            if (transform.position.x < collision.gameObject.transform.position.x)
+            {
+                rb.velocity = new Vector2(10, 0);
+            }
+            if (transform.position.x > collision.gameObject.transform.position.x)
+            {
+                rb.velocity = new Vector2(-10, 0);
+            }
+        }
+
+    }
 }
