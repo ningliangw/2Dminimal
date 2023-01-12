@@ -180,4 +180,20 @@ public class player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)//Åö×²´¥·¢Æ÷
+    {
+       if (collision.gameObject.CompareTag("enemies"))
+        {
+            isHurt = true;
+            if (transform.position.x < collision.gameObject.transform.position.x)
+            {
+                rb.velocity = new Vector2(10, 0);
+            }
+            if (transform.position.x > collision.gameObject.transform.position.x)
+            {
+                rb.velocity = new Vector2(-10, 0);
+            }
+        }
+
+    }
 }
