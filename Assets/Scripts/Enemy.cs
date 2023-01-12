@@ -1,33 +1,55 @@
-﻿using System.Collections;
-using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    private Animator anim;
+<<<<<<< Updated upstream
+    // Start is called before the first frame update
+    protected Animator anim;
     public int health;
-    public GameObject sceneTransform;//�Ʒ�
-    private Rigidbody2D rb;
-    public float DieTime;
-    public int score;
-    public bool HaveTaken = false;
-    private Transform playertransform;
-    public AudioSource deathaudio;
-    private bool isdied = false;
     public int damage;
 
-         void Start()
+    protected virtual void Start()
     {
-        playertransform = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
+=======
+    private Animator anim;
+    public GameObject sceneTransform;//�Ʒ�
+    public AudioSource deathAudio;
+    public int health;
+    public int damage;
+    public int score;
+    public float DieTime;
+    public bool HaveTaken = false;
+
+    private Rigidbody2D rb;
+    private Transform playertransform;
+    private playerHealth playerHealth;
+    private bool faceLeft = true;
+    private bool isGround;
+    private bool isdied = false;
+
+     void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+>>>>>>> Stashed changes
         anim = GetComponent<Animator>();
+        deathAudio = GetComponent<AudioSource>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<playerHealth>();
+        playertransform = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
     }
 
-    void Update()
+    // Update is called once per frame
+    protected void Update()
     {
+<<<<<<< Updated upstream
+        if (health <= 0)
+=======
+        /*CheckGrounded();
+        SwitchAnim();*/
         Isdie();
     }
+
     public void TakeDamage(int damage)
     {
         GameController.camShake.Shake();
@@ -36,18 +58,22 @@ public class Enemy : MonoBehaviour
             health -= damage;
         }
         else if (health <= 0 && !HaveTaken)
+>>>>>>> Stashed changes
         {
-            health = 0;
-            isdied = true;
+            Destroy(gameObject);
         }
     }
+<<<<<<< Updated upstream
+
+    protected void TakeDamage(int damage)
+=======
     void Isdie()
     {
         if (health <= 0 && !HaveTaken)
             {
             rb.velocity = new Vector2(0, 0);
                 anim.SetTrigger("die");
-                deathaudio.Play();
+                deathAudio.Play();
                 player x = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
                 x.collectionsget += score;
                 int y = x.collectionsget;
@@ -60,7 +86,9 @@ public class Enemy : MonoBehaviour
             }
     }
     void Killer()
+>>>>>>> Stashed changes
     {
-        Destroy(gameObject);
+        health -= damage;
+        GameController.camShake.Shake();
     }
 }

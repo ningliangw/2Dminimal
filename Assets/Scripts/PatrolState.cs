@@ -14,7 +14,7 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
     }
     public void OnEnter()//½øÈë
     {
-        parameter.anim.Play("Walk");
+        parameter.anim.Play("move");
     }
     public void OnUpdate()//Ö´ÐÐ
     {
@@ -22,7 +22,7 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
 
         manager.transform.position = Vector2.MoveTowards(manager.transform.position, 
             parameter.patrolPoints[patrolPosition].position, parameter.moveSpeed * Time.deltaTime);//µÐÈËÒÆ¶¯µ½Ñ²Âßµã
-        if (Vector2.Distance(manager.transform.position, parameter.patrolPoints[patrolPosition].position) < 1f)
+        if (Vector2.Distance(manager.transform.position, parameter.patrolPoints[patrolPosition].position) < 4f)
         {
             manager.TransitionState(StateType.Idle);//×ª»»³É¿ÕÏÐ×´Ì¬
         }
