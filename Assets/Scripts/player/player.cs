@@ -131,6 +131,8 @@ public class player : MonoBehaviour
         {
             anim.SetBool("hurt", true);
             anim.SetFloat("running", 0);
+            anim.SetBool("falling", false);
+            anim.SetBool("jumping", false);
             AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.517f && rb.velocity.y < 2f)
             {
@@ -188,7 +190,7 @@ public class player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)//Åö×²´¥·¢Æ÷
     {
-       if (collision.gameObject.CompareTag("enemies"))
+       if (collision.gameObject.CompareTag("enemies") || collision.gameObject.CompareTag("crycry"))
         {
             isHurt = true;
             /*if (transform.position.x < collision.gameObject.transform.position.x)
