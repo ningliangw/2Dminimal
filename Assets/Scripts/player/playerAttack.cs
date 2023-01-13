@@ -15,6 +15,7 @@ public class playerAttack : MonoBehaviour
     public AudioSource attackMusic;
     void Start()
     {
+
         anim = GameObject.FindGameObjectWithTag("player").GetComponent<Animator>();
         coll2D = GetComponent<PolygonCollider2D>();
     }
@@ -56,13 +57,6 @@ public class playerAttack : MonoBehaviour
         if (other.gameObject.CompareTag("enemies"))
         {
             other.GetComponent<Enemy>().TakeDamage(damage);
-        }
-        if (other.gameObject.CompareTag("crycry"))
-        {
-            if (GameObject.Find("player").GetComponent<Transform>().localScale.x * other.transform.localScale.x < 0)//³¯ÏòÒ»ÖÂ
-            {
-                other.GetComponent<Enemy>().TakeDamage(damage);
-            }
         }
     }
 }
