@@ -9593,9 +9593,9 @@ GameObject:
   - component: {fileID: 1009729812}
   - component: {fileID: 1009729813}
   - component: {fileID: 1009729814}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: crycry
-  m_TagString: enemies
+  m_TagString: crycry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9750,7 +9750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
-  health: 10
+  health: 50
   damage: 1
   score: 0
   DieTime: 1
@@ -9788,8 +9788,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.5378351, y: -0.48706555}
-  m_Size: {x: 4.7248287, y: 5.900869}
+  m_Offset: {x: -0.055555344, y: -0.48706555}
+  m_Size: {x: 3.7602692, y: 5.900869}
   m_Direction: 0
 --- !u!1 &1181239517
 GameObject:
