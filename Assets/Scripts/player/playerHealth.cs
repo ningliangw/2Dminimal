@@ -34,7 +34,7 @@ public class playerHealth : MonoBehaviour
         if (HP <= 0)
         {
             isdied = true;
-            Invoke("Killer", DieTime);
+            Invoke("Killer", DieTime);//��ʱ
         }
         else
         {
