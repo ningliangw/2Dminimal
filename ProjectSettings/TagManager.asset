@@ -8,6 +8,7 @@ TagManager:
   - CameraShake
   - player
   - enemies
+  - defend
   layers:
   - Default
   - TransparentFX

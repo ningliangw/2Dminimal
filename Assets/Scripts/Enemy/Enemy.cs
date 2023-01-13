@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     private Animator anim;
-   // public GameObject sceneTransform;//�Ʒ�
+   // public GameObject sceneTransform;
     public AudioSource deathAudio;
     public int health;
     public int damage;
@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
         {
             health = 0;
             isdied = true;
+            Isdie();
         }
     }
     void Isdie()
@@ -58,11 +59,14 @@ public class Enemy : MonoBehaviour
         if (health <= 0 && !HaveTaken)
         {
             rb.velocity = new Vector2(0, 0);
-            anim.SetTrigger("die");
-            deathAudio.Play();
-            Invoke("Killer", DieTime);//
             HaveTaken = true;
+       //     deathAudio.Play();
+            Invoke("Killer", DieTime);//
             player x = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
+            playerHealth z = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
+            z.HP = 3;
+            GameObject.FindGameObjectWithTag("player").GetComponent<Animator>().SetTrigger("devour");
+            GameObject.FindGameObjectWithTag("player").GetComponent<Animator>().SetBool("isdevouring", true);
             x.collectionsget += score;
             int y = x.collectionsget;
             if (y > 27)
