@@ -14,10 +14,11 @@ public class Enemy : MonoBehaviour
     public int score;
     public float DieTime;
     public float flashTime;
+    public float radius;//距离
     public bool HaveTaken = false;
 
     private Rigidbody2D rb;
-    private Transform playertransform;
+    private Transform playerTransform;
     private playerHealth playerHealth;
     private SpriteRenderer sr;
     private Color originalColor;
@@ -31,7 +32,7 @@ public class Enemy : MonoBehaviour
         deathAudio = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
-        playertransform = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
+        playerTransform = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<playerHealth>();
     }
 
@@ -90,4 +91,34 @@ public class Enemy : MonoBehaviour
     {
         sr.color = originalColor;
     }
-}
+
+    void Attack()
+    {
+        if (playerTransform != null)
+        {
+            float distance = (transform.position - playerTransform.position).sqrMagnitude;//玩家和敌人的距离。为一个?
+            if (distance < radius)//玩家进入巡逻半径
+            {
+               /* cut = 0;
+                if (anim.GetBool("wake") == false)
+                {
+                    StartCoroutine(StartWake());
+                }
+                if (Begin)
+                {
+                    transform.position = UnityEngine.Vector2.MoveTowards(transform.position, playertransform.position, speed * Time.deltaTime);//追击
+                }
+            }
+            else
+            {
+                cut++;
+                if (cut >= lenth)
+                {
+                    anim.SetBool("wake", false);
+                    anim.SetBool("move", false);
+                    Begin = false;*/
+                }
+            }
+        }
+    }
+

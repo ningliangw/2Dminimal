@@ -11,7 +11,6 @@ public enum StateType//枚举状态类型
 [Serializable]//序列化
 public class Parameter
 {
-    public int health;
     public float moveSpeed;
     public float chaseSpeed;        //追踪速度
     public float idleTime;
