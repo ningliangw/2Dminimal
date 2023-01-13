@@ -8,6 +8,8 @@ public class playerAttack : MonoBehaviour
     public int damage;
     public float time;
     public float startTime;
+    public Transform target;
+
     private Animator anim;
     private PolygonCollider2D coll2D;
     public AudioSource attackMusic;

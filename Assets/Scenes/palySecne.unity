@@ -4406,6 +4406,7 @@ MonoBehaviour:
   damage: 2
   time: 0.05
   startTime: 0.21
+  target: {fileID: 0}
   attackMusic: {fileID: 0}
 --- !u!82 &660868648
 AudioSource:
@@ -9749,10 +9750,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
-  health: 2
-  damage: 0
+  health: 10
+  damage: 1
   score: 0
   DieTime: 1
+  flashTime: 0.1
   HaveTaken: 0
 --- !u!95 &1009729814
 Animator:

@@ -13,11 +13,15 @@ public class Enemy : MonoBehaviour
     public int damage;
     public int score;
     public float DieTime;
+    public float flashTime;
     public bool HaveTaken = false;
 
     private Rigidbody2D rb;
     private Transform playertransform;
     private playerHealth playerHealth;
+    private SpriteRenderer sr;
+    private Color originalColor;
+
     private bool isdied = false;
 
     void Start()
@@ -25,6 +29,8 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         deathAudio = GetComponent<AudioSource>();
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
         playertransform = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<playerHealth>();
     }
@@ -39,6 +45,7 @@ public class Enemy : MonoBehaviour
         if (health - damage >= 0)
         {
             health -= damage;
+            FlashColor(flashTime);
         }
         else if (health <= 0 && !HaveTaken)
         {
@@ -67,5 +74,16 @@ public class Enemy : MonoBehaviour
     void Killer()
     {
         Destroy(gameObject);
+    }
+
+    void FlashColor(float time)
+    {
+        sr.color = Color.red;//变红闪烁
+        Invoke("ResetColor", time);//延时调用ResetColor函数
+    }
+
+    void ResetColor()
+    {
+        sr.color = originalColor;
     }
 }
