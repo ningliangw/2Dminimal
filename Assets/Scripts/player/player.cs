@@ -70,13 +70,19 @@ public class player : MonoBehaviour
         facedirection = Input.GetAxisRaw("Horizontal");
 
         //控制朝向
-        if (facedirection != 0 && facedirection * this.transform.localScale.x < 0)//
+        if (anim.GetBool("isattacking") == false)
         {
-            transform.localScale = new Vector3(facedirection * Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, 1);
-            if (isGround)
+            if (facedirection != 0 && facedirection * this.transform.localScale.x < 0)//
             {
-                PPS();
+                transform.localScale = new Vector3(facedirection * Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, 1);
+                if (isGround)
+                {
+                    PPS();
+                }
             }
+        }else//攻击时锁定朝向
+        {
+            transform.localScale = new Vector3(this.transform.localScale.x, this.transform.localScale.y, 1);
         }
         //控制移动
         if (horizontalmove != 0)//控制移动
@@ -185,14 +191,14 @@ public class player : MonoBehaviour
        if (collision.gameObject.CompareTag("enemies"))
         {
             isHurt = true;
-            if (transform.position.x < collision.gameObject.transform.position.x)
+            /*if (transform.position.x < collision.gameObject.transform.position.x)
             {
                 rb.velocity = new Vector2(10, 0);
             }
             if (transform.position.x > collision.gameObject.transform.position.x)
             {
                 rb.velocity = new Vector2(-10, 0);
-            }
+            }*/
         }
 
     }

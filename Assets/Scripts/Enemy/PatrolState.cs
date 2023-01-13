@@ -22,7 +22,7 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
 
         manager.transform.position = Vector2.MoveTowards(manager.transform.position, 
             parameter.patrolPoints[patrolPosition].position, parameter.moveSpeed * Time.deltaTime);//µÐÈËÒÆ¶¯µ½Ñ²Âßµã
-        if (Vector2.Distance(manager.transform.position, parameter.patrolPoints[patrolPosition].position) < 5f)
+        if (Vector2.Distance(manager.transform.position, parameter.patrolPoints[patrolPosition].position) < 6f)
         {
             manager.TransitionState(StateType.Idle);//×ª»»³É¿ÕÏÐ×´Ì¬
         }
