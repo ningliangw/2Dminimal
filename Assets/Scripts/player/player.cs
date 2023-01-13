@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Data;
-
 public class player : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -12,33 +10,29 @@ public class player : MonoBehaviour
     private Animator anim;
     private BoxCollider2D Feet;
     private ParticleSystem playerPS;
-    private GameObject dashObj;
+    public GameObject dashObj;
     public GameObject body;
     public GameObject enemy;
     public AudioSource JumpMusic;
     public float playerSpeed = 4f;
     public float jumpforce;
     public float dashSpeed;
-    public float beHurtTime;
     public float dashTime;
     public int collectionsget = 0;
     private int canSuspend = 0;//悬浮判断
     private float hideTimer = 0f;//计时器
     private float suspendTime = 0.5f;//悬浮时间
     private float startDashTimer;//计时
-    public float defendTime = 1f;//无敌时间
-    public float useDefendTime = 0f;
+    private float defendTime = 3f;//无敌时间
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
-    public bool isDefend = false;//判断是否无敌
+    private bool isDefend = false;//判断是否无敌
     private float jumpPreinput = 0f;
     private bool isDashing = false;//判断是否处于冲刺状态
-
 
     private float facedirection;
     void Start()
     {
-        dashObj = transform.GetChild(1).gameObject;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -49,34 +43,23 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDefend)
-        {
-            Movement();
-            Dash();
-        }
-            Suspend();
-        Defend();
+        Movement();
+        Dash();
+        Suspend();
         falljudge();
-        hurtjudge();
     }
 
 
     private void FixedUpdate()//固定刷新率。0.02s刷新一次,无敌时间，冷却时间，预输入部分
     {
         if (jumpPreinput > 0.08f) { jumpPreinput -= 0.02f; }
-        beHurtTime += 0.02f;
-        if (useDefendTime > 0f)
-        {
-            useDefendTime -= 0.02f;
-        }
        if (isDefend)
         {
+            Physics.IgnoreCollision(body.GetComponent<Collider>(), enemy.GetComponent<Collider>());
             defendTime -= 0.02f;
             if (defendTime <= 0)
             {
-                defendTime = 1f;
                 isDefend = false;
-                transform.GetChild(4).gameObject.SetActive(false);
             }
         }
     }
@@ -144,24 +127,21 @@ public class player : MonoBehaviour
                 canSuspend = 0;
             }
         }
-    }//下落判定及动画切换
-
-    void hurtjudge()
-    {
         if (isHurt)
         {
             anim.SetBool("hurt", true);
             anim.SetFloat("running", 0);
+            anim.SetBool("falling", false);
+            anim.SetBool("jumping", false);
             AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
-            if (info.normalizedTime >= 0.51f)
+            if (info.normalizedTime >= 0.517f && rb.velocity.y < 2f)
             {
                 anim.SetBool("hurt", false);
                 isHurt = false;
-          //          Invoke("HurtTime", beHurtTime);
             }
         }
 
-    }
+    }//下落判定及动画切换
     void PPS()//灰尘粒子
     {
         playerPS.Play();
@@ -193,15 +173,6 @@ public class player : MonoBehaviour
         }
     }
 
-    void Defend()
-    {
-        if (Input.GetMouseButtonDown(1) && useDefendTime <= 0)
-        {
-            isDefend = true;
-            transform.GetChild(4).gameObject.SetActive(true);
-            useDefendTime = 10f;
-        }
-    }
     void Suspend() //悬浮
     {
         if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1)
@@ -219,16 +190,9 @@ public class player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)//碰撞触发器
     {
-       if (collision.gameObject.CompareTag("enemies")&&anim.GetBool("isattacking")==false)
+       if (collision.gameObject.CompareTag("enemies") || collision.gameObject.CompareTag("crycry"))
         {
-            if (!isDashing && !isDefend&& beHurtTime >= 1)
-            {
-                playerHealth x = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
-                Enemy y = collision.GetComponent<Enemy>();
-                isHurt = true;
-                beHurtTime = 0f;
-                x.DamagePlayer(y.damage);
-            }
+            isHurt = true;
             /*if (transform.position.x < collision.gameObject.transform.position.x)
             {
                 rb.velocity = new Vector2(10, 0);
