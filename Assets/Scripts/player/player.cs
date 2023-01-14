@@ -229,14 +229,7 @@ public class player : MonoBehaviour
                 beHurtTime = 0f;
                 x.DamagePlayer(y.damage);
             }
-            /*if (transform.position.x < collision.gameObject.transform.position.x)
-            {
-                rb.velocity = new Vector2(10, 0);
-            }
-            if (transform.position.x > collision.gameObject.transform.position.x)
-            {
-                rb.velocity = new Vector2(-10, 0);
-            }*/
+            
         }
 
     }
