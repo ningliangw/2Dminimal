@@ -9,6 +9,7 @@ TagManager:
   - player
   - enemies
   - defend
+  - crycry
   layers:
   - Default
   - TransparentFX

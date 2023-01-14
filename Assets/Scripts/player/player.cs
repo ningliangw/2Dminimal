@@ -218,9 +218,9 @@ public class player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)//Åö×²´¥·¢Æ÷
     {
-       if (collision.gameObject.CompareTag("enemies")&&anim.GetBool("isattacking")==false)
+       if (collision.gameObject.CompareTag("enemies")|| collision.gameObject.CompareTag("crycry"))
         {
-            if (!isDashing && !isDefend&& beHurtTime >= 1)
+            if (!isDashing && !isDefend&& beHurtTime >= 1&&anim.GetBool("isattacking") == false)
             {
                 playerHealth x = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
                 Enemy y = collision.GetComponent<Enemy>();
