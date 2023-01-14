@@ -150,7 +150,6 @@ public class player : MonoBehaviour
     {
         if (isHurt)
         {
-            anim.SetBool("hurt", true);
             anim.SetFloat("running", 0);
             AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.51f)
@@ -226,6 +225,7 @@ public class player : MonoBehaviour
                 playerHealth x = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
                 Enemy y = collision.GetComponent<Enemy>();
                 isHurt = true;
+                anim.SetBool("hurt", true);
                 beHurtTime = 0f;
                 x.DamagePlayer(y.damage);
             }
