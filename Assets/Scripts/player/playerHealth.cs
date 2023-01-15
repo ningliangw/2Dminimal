@@ -36,8 +36,7 @@ public class playerHealth : MonoBehaviour
         {
             isdied = true;
             Invoke("Killer", DieTime);
-            transform.position = GameObject.FindGameObjectWithTag("player").GetComponent<player>().respawnPosition;
-            HP = maxHP;
+            
         }
         else
         {
@@ -60,7 +59,8 @@ public class playerHealth : MonoBehaviour
     }
     void Killer()
     {
-        Destroy(gameObject);
+        transform.position = GameObject.FindGameObjectWithTag("player").GetComponent<player>().respawnPosition;
+        HP = maxHP;
     }
     void BlinkPlayer(int numBlinks, float seconds)
     {

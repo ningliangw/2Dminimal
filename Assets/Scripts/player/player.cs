@@ -243,9 +243,9 @@ public class player : MonoBehaviour
                 Enemy y = collision.GetComponent<Enemy>();
                 isHurt = true;
                 anim.SetBool("hurt", true);
-                SoundMananger.instance.PlayerHurt();//“Ù–ß
                 beHurtTime = 0f;
                 x.DamagePlayer(y.damage);
+                SoundMananger.instance.PlayerHurt();//“Ù–ß
             }
             
         }
