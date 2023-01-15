@@ -34,11 +34,11 @@ public class playerAttack : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && anim.GetBool("isattacking") == false)
         {
-            SoundMananger.instance.PlayerAttack();
             anim.SetTrigger("attack");
             StartCoroutine(StartAttack());
             anim.SetBool("isattacking", true);
             attackMusic.Play();
+            SoundMananger.instance.PlayerAttack();
 
         }
     }
