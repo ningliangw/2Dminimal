@@ -90,4 +90,12 @@ public class Enemy : MonoBehaviour
     {
         sr.color = originalColor;
     }
+    IEnumerator Waitfortime()
+    {
+        yield return new WaitForSeconds(this.GetComponentInParent<EnemyBoss>().waitTime);//延时
+    }
+    void WaitWait()
+    {
+    
+    }
 }
