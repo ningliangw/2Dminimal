@@ -146,10 +146,6 @@ public class player : MonoBehaviour
         }
     }//下落判定及动画切换
 
-    void Nothurt()
-    {
-        anim.SetBool("hurt", false);
-    }
     void hurtjudge()
     {
         if (isHurt)
@@ -158,6 +154,7 @@ public class player : MonoBehaviour
             AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.51f)
             {
+                anim.SetBool("hurt", false);
                 isHurt = false;
           //          Invoke("HurtTime", beHurtTime);
             }
@@ -170,10 +167,6 @@ public class player : MonoBehaviour
     }
     void Dash()
     {
-        if (rb.velocity.y > jumpforce &&isDashing)
-        {
-            rb.velocity = new Vector2(rb.velocity.x,0.5f* jumpforce);
-        }
         if (!isDashing)
         {
             if (Input.GetButtonDown("dash"))
@@ -227,7 +220,7 @@ public class player : MonoBehaviour
     {
        if (collision.gameObject.CompareTag("enemies")|| collision.gameObject.CompareTag("crycry"))
         {
-            if (!isDashing && !isDefend&& beHurtTime >=0.8f&&anim.GetBool("isattacking") == false)
+            if (!isDashing && !isDefend&& beHurtTime >= 1&&anim.GetBool("isattacking") == false)
             {
                 playerHealth x = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
                 Enemy y = collision.GetComponent<Enemy>();
