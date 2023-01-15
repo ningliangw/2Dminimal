@@ -120,6 +120,7 @@ public class player : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
             PPS();
+            SoundMananger.instance.PlayerJump();//音效
             anim.SetBool("jumping", true);
             JumpMusic.Play();
         }
@@ -182,6 +183,7 @@ public class player : MonoBehaviour
         {
             if (Input.GetButtonDown("dash") && canDash)
             {
+                SoundMananger.instance.PlayerDash();//音效
                 dashObj.SetActive(true);
                 isDashing = true;
                 startDashTimer = dashTime;
@@ -207,6 +209,7 @@ public class player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && useDefendTime <= 0 && canDefend)
         {
+            SoundMananger.instance.PlayerDefend();//音效
             isDefend = true;
             transform.GetChild(4).gameObject.SetActive(true);
             useDefendTime = 10f;
@@ -216,6 +219,7 @@ public class player : MonoBehaviour
     {
         if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1 && can_Suspend)
         {
+            SoundMananger.instance.PlayerSuspend();//音效
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
             hideTimer = Time.time + suspendTime;//经过悬浮时间后
@@ -236,6 +240,7 @@ public class player : MonoBehaviour
                 playerHealth x = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
                 Enemy y = collision.GetComponent<Enemy>();
                 isHurt = true;
+                SoundMananger.instance.PlayerHurt();//音效
                 anim.SetBool("hurt", true);
                 beHurtTime = 0f;
                 x.DamagePlayer(y.damage);

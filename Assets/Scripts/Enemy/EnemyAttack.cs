@@ -27,6 +27,7 @@ public class EnemyAttack : MonoBehaviour
             float distance = Mathf.Abs(transform.position.x - playertransform.position.x);//玩家和敌人的距离。为一个
             if (distance <=radius&&attack.GetBool("attack")==false)//玩家进入巡逻半径
             {
+                SoundMananger.instance.EnemyAttack();
                 attack.SetBool("attack", true);
                 anim.SetBool("attack", true);
                 StartCoroutine(StartAttack());
