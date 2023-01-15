@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,12 +27,9 @@ public class EnemyBoss : MonoBehaviour
             float distance = Mathf.Abs(transform.position.x - playertransform.position.x);//玩家和敌人的距离。为一个
             if (distance <=distancenow)//玩家进入巡逻半径
             {
-                Round1();
-                Invoke("Round2", temptime);
-              /*  Waitfortime(temptime);
-                Round2();*/
-                attackMusic.Play();
+               // attackMusic.Play();
                 haveTaken = true;
+                   StartCoroutine(Round2());
             }
         }
     }
@@ -40,11 +38,71 @@ public class EnemyBoss : MonoBehaviour
         child0.SetActive(true);
         child1.SetActive(true);
     }
-    void Round2()
+
+    IEnumerator Round2()
     {
-        for(int i=2;i<9 ;Waitfortime(waitTime),i++ )
+        for (int q = 40; q > 0; q--)
         {
-            transform.GetChild(i).gameObject.SetActive(true);
+            Round1();
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 2; i < 9; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+                yield return new WaitForSeconds(waitTime);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                if (i > 1) { transform.GetChild(i).localPosition = new Vector3(transform.GetChild(i).localPosition.x - 6, transform.GetChild(i).localPosition.y, transform.GetChild(i).localPosition.z); }
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 8; i > 1; i--)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+                yield return new WaitForSeconds(waitTime);
+            }
+            for (int i = 2; i < 9; i++)
+            {
+                transform.GetChild(i).localPosition = new Vector3(transform.GetChild(i).localPosition.x + 6, transform.GetChild(i).localPosition.y, transform.GetChild(i).localPosition.z);
+            }
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 9; i < 18; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+                yield return new WaitForSeconds(waitTime);
+            }
+            for (int i = 2; i < 18; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 2; i < 9; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 1; i < 17; i++)
+            {
+                transform.GetChild(18).gameObject.SetActive(true);
+                transform.GetChild(18).localPosition = new Vector3(transform.GetChild(18).localPosition.x + 6, transform.GetChild(18).localPosition.y, transform.GetChild(18).localPosition.z);
+                yield return new WaitForSeconds(waitTime);
+                transform.GetChild(18).gameObject.SetActive(false);
+            }
+            yield return new WaitForSeconds(waitTime);
+            transform.GetChild(18).localPosition = new Vector3(transform.GetChild(18).localPosition.x - 16 * 6, transform.GetChild(18).localPosition.y, transform.GetChild(18).localPosition.z);
+            for (int i = 1; i < 16; i++)
+            {
+                transform.GetChild(9).gameObject.SetActive(true);
+                transform.GetChild(9).localPosition = new Vector3(transform.GetChild(9).localPosition.x - 6, transform.GetChild(9).localPosition.y, transform.GetChild(9).localPosition.z);
+                yield return new WaitForSeconds(waitTime);
+                transform.GetChild(9).gameObject.SetActive(false);
+            }
+            transform.GetChild(9).localPosition = new Vector3(transform.GetChild(9).localPosition.x + 90, transform.GetChild(9).localPosition.y, transform.GetChild(9).localPosition.z);
+            for (int i = 0; i < 19; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+            yield return new WaitForSeconds(temptime);
         }
     }
     IEnumerator Waitfortime(float time)
