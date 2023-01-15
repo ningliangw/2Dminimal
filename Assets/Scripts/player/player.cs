@@ -180,7 +180,7 @@ public class player : MonoBehaviour
         }
         if (!isDashing)
         {
-            if (Input.GetButtonDown("dash"))
+            if (Input.GetButtonDown("dash") && canDash)
             {
                 dashObj.SetActive(true);
                 isDashing = true;
@@ -242,10 +242,22 @@ public class player : MonoBehaviour
             }
             
         }
+       //ÄÜÁ¦½âËø
        if (collision.gameObject.CompareTag("Tentacle"))
         {
             canJump = true;
         }
-
+        if (collision.gameObject.CompareTag("hand"))
+        {
+            canDefend = true;
+        }
+        if (collision.gameObject.CompareTag("rib"))
+        {
+            can_Suspend = true;
+        }
+        if (collision.gameObject.CompareTag("eyeball"))
+        {
+            canDash = true;
+        }
     }
 }

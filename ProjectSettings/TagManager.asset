@@ -11,6 +11,9 @@ TagManager:
   - defend
   - crycry
   - Tentacle
+  - hand
+  - rib
+  - eyeball
   layers:
   - Default
   - TransparentFX
