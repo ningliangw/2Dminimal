@@ -15,6 +15,7 @@ public class playerHealth : MonoBehaviour
     {
         maxHP = HP;
         myRender = GetComponent<Renderer>();
+        
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class playerHealth : MonoBehaviour
         {
             isdied = true;
             Invoke("Killer", DieTime);
+            
         }
         else
         {
@@ -57,7 +59,8 @@ public class playerHealth : MonoBehaviour
     }
     void Killer()
     {
-        Destroy(gameObject);
+        transform.position = GameObject.FindGameObjectWithTag("player").GetComponent<player>().respawnPosition;
+        HP = maxHP;
     }
     void BlinkPlayer(int numBlinks, float seconds)
     {
