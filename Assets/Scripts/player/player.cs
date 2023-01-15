@@ -172,7 +172,7 @@ public class player : MonoBehaviour
     {
         if (rb.velocity.y > jumpforce &&isDashing)
         {
-            rb.velocity = new Vector2(rb.velocity.x,0.5f* jumpforce);
+            rb.velocity = new Vector2(rb.velocity.x,0.2f* jumpforce);
         }
         if (!isDashing)
         {
