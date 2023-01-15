@@ -54,7 +54,6 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("player"))
         {
-            StartCoroutine(StartAttack());
             attack.SetBool("attack", true);
             anim.SetBool("attack", true);
             attackMusic.Play();
