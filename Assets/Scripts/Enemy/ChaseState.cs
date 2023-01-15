@@ -18,21 +18,23 @@ public class ChaseState : IState//追踪状态
     }
     public void OnUpdate()//执行
     {
-        manager.Flip(parameter.target);//敌人朝向
+        manager.Flip(parameter.patrolPoints[patrolPosition]);//敌人朝向
 
-        if (parameter.target)
+        manager.transform.position = Vector2.MoveTowards(manager.transform.position,
+            parameter.patrolPoints[patrolPosition].position, parameter.chaseSpeed * Time.deltaTime);//敌人移动到巡逻点
+        if (Vector2.Distance(manager.transform.position, parameter.patrolPoints[patrolPosition].position) < 6f)
         {
-            manager.transform.position = Vector2.MoveTowards(manager.transform.position,
-            parameter.target.position, parameter.chaseSpeed * Time.deltaTime);//追逐玩家
-        }
-        if (parameter.target == null)
-        {
-
+            manager.TransitionState(StateType.Idle);//转换成空闲状态
         }
 
     }
     public void OnExit()//退出
     {
-        
+        patrolPosition++;
+
+        if (patrolPosition >= parameter.patrolPoints.Length)//巡逻点下标超出
+        {
+            patrolPosition = 0;
+        }
     }
 }

@@ -39,6 +39,8 @@ public class playerHealth : MonoBehaviour
         else
         {
             BlinkPlayer(Blinks, Time);
+            Animator x = GameObject.FindGameObjectWithTag("player").GetComponent<Animator>();
+            x.SetBool("hurt", true);
         }
     }
     public void Recovey(int recovey)

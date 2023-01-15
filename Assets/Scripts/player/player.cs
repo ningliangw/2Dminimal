@@ -31,6 +31,10 @@ public class player : MonoBehaviour
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
     public bool isDefend = false;//判断是否无敌
+    private bool canJump = false;//判断能否跳跃
+    private bool canDefend = false;//判断是否能使用护盾
+    private bool can_Suspend = false;//判断能否悬浮
+    private bool canDash = false;//判断能否冲刺
     private float jumpPreinput = 0f;
     private bool isDashing = false;//判断是否处于冲刺状态
 
@@ -108,7 +112,7 @@ public class player : MonoBehaviour
             rb.velocity = new Vector2(horizontalmove * playerSpeed, rb.velocity.y);
         }
         isGround = Feet.IsTouchingLayers(LayerMask.GetMask("ground"));
-        if (Input.GetButtonDown("Jump"))//跳跃
+        if (Input.GetButtonDown("Jump") && canJump)//跳跃
         {
             jumpPreinput = 0.18f;
         }
@@ -118,6 +122,7 @@ public class player : MonoBehaviour
             PPS();
             anim.SetBool("jumping", true);
             JumpMusic.Play();
+            SoundMananger.instance.PlayerJump();//音效
         }
     }
     void falljudge()
@@ -146,6 +151,10 @@ public class player : MonoBehaviour
         }
     }//下落判定及动画切换
 
+    void Nothurt()
+    {
+        anim.SetBool("hurt", false);
+    }
     void hurtjudge()
     {
         if (isHurt)
@@ -154,7 +163,6 @@ public class player : MonoBehaviour
             AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.51f)
             {
-                anim.SetBool("hurt", false);
                 isHurt = false;
           //          Invoke("HurtTime", beHurtTime);
             }
@@ -167,13 +175,18 @@ public class player : MonoBehaviour
     }
     void Dash()
     {
+        if (rb.velocity.y > jumpforce &&isDashing && canDash)
+        {
+            rb.velocity = new Vector2(rb.velocity.x,0.2f* jumpforce);
+        }
         if (!isDashing)
         {
-            if (Input.GetButtonDown("dash"))
+            if (Input.GetButtonDown("dash") && canDash)
             {
                 dashObj.SetActive(true);
                 isDashing = true;
                 startDashTimer = dashTime;
+                SoundMananger.instance.PlayerDash();//音效
             }
         }
         else
@@ -194,20 +207,22 @@ public class player : MonoBehaviour
 
     void Defend()
     {
-        if (Input.GetMouseButtonDown(1) && useDefendTime <= 0)
+        if (Input.GetMouseButtonDown(1) && useDefendTime <= 0 && canDefend)
         {
             isDefend = true;
             transform.GetChild(4).gameObject.SetActive(true);
             useDefendTime = 10f;
+            SoundMananger.instance.PlayerDefend();//音效
         }
     }
     void Suspend() //悬浮
     {
-        if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1)
+        if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1 && can_Suspend)
         {
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
             hideTimer = Time.time + suspendTime;//经过悬浮时间后
+            SoundMananger.instance.PlayerSuspend();//音效
 
         }
         if (Time.time >= hideTimer)
@@ -218,26 +233,36 @@ public class player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)//碰撞触发器
     {
-       if (collision.gameObject.CompareTag("enemies")&&anim.GetBool("isattacking")==false)
+       if (collision.gameObject.CompareTag("enemies")|| collision.gameObject.CompareTag("crycry"))
         {
-            if (!isDashing && !isDefend&& beHurtTime >= 1)
+            if (!isDashing && !isDefend&& beHurtTime >=0.8f&&anim.GetBool("isattacking") == false)
             {
                 playerHealth x = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
                 Enemy y = collision.GetComponent<Enemy>();
                 isHurt = true;
                 anim.SetBool("hurt", true);
+                SoundMananger.instance.PlayerHurt();//音效
                 beHurtTime = 0f;
                 x.DamagePlayer(y.damage);
             }
-            /*if (transform.position.x < collision.gameObject.transform.position.x)
-            {
-                rb.velocity = new Vector2(10, 0);
-            }
-            if (transform.position.x > collision.gameObject.transform.position.x)
-            {
-                rb.velocity = new Vector2(-10, 0);
-            }*/
+            
         }
-
+       //能力解锁
+       if (collision.gameObject.CompareTag("Tentacle"))
+        {
+            canJump = true;
+        }
+        if (collision.gameObject.CompareTag("hand"))
+        {
+            canDefend = true;
+        }
+        if (collision.gameObject.CompareTag("rib"))
+        {
+            can_Suspend = true;
+        }
+        if (collision.gameObject.CompareTag("eyeball"))
+        {
+            canDash = true;
+        }
     }
 }

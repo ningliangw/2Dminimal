@@ -38,6 +38,7 @@ public class playerAttack : MonoBehaviour
             StartCoroutine(StartAttack());
             anim.SetBool("isattacking", true);
             attackMusic.Play();
+            SoundMananger.instance.PlayerAttack();
 
         }
     }
@@ -58,5 +59,13 @@ public class playerAttack : MonoBehaviour
         {
             other.GetComponent<Enemy>().TakeDamage(damage);
         }
+        if (other.gameObject.CompareTag("crycry"))
+        {
+            if (GameObject.FindGameObjectWithTag("player").transform.localScale.x * other.transform.localScale.x < 0)
+            {
+                other.GetComponent<Enemy>().TakeDamage(damage);
+            }
+        }
     }
+
 }

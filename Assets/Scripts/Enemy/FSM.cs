@@ -11,10 +11,10 @@ public enum StateType//枚举状态类型
 [Serializable]//序列化
 public class Parameter
 {
-    public int health;
     public float moveSpeed;
     public float chaseSpeed;        //追踪速度
     public float idleTime;
+    public float radius;//距离
     public Transform[] patrolPoints;//巡逻点
     public Transform[] chasePoints; //追踪点
     public Transform target;

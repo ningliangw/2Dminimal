@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
         GameController.camShake.Shake();
         if (health - damage >= 0)
         {
+            SoundMananger.instance.EnemyHurt();
             health -= damage;
             FlashColor(flashTime);
         }
@@ -89,5 +90,13 @@ public class Enemy : MonoBehaviour
     void ResetColor()
     {
         sr.color = originalColor;
+    }
+    IEnumerator Waitfortime()
+    {
+        yield return new WaitForSeconds(this.GetComponentInParent<EnemyBoss>().waitTime);//延时
+    }
+    void WaitWait()
+    {
+    
     }
 }
