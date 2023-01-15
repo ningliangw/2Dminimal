@@ -27,6 +27,18 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
             manager.TransitionState(StateType.Idle);//×ª»»³É¿ÕÏĞ×´Ì¬
         }
 
+        float distance = manager.transform.position.x - parameter.target.transform.position.x;
+        if (distance < 0 && Mathf.Abs(distance) <= parameter.radius && manager.transform.localScale.x < 0)//¹ÖÎïÔÚ×ó
+        {
+            manager.TransitionState(StateType.Chase);//×ª»»³É¿ÕÏĞ×´Ì¬
+            SoundMananger.instance.EnemyAttack();
+        }
+        if (distance > 0 && distance <= parameter.radius && manager.transform.localScale.x > 0)//¹ÖÎïÔÚÓÒ
+        {
+            manager.TransitionState(StateType.Chase);//×ª»»³É¿ÕÏĞ×´Ì¬
+            SoundMananger.instance.EnemyAttack();
+        }
+
     }
     public void OnExit()//ÍË³ö
     {

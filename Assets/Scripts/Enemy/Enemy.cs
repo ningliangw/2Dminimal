@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
         GameController.camShake.Shake();
         if (health - damage >= 0)
         {
+            SoundMananger.instance.EnemyHurt();
             health -= damage;
             FlashColor(flashTime);
         }

@@ -10,6 +10,10 @@ TagManager:
   - enemies
   - defend
   - crycry
+  - Tentacle
+  - hand
+  - rib
+  - eyeball
   layers:
   - Default
   - TransparentFX
@@ -20,8 +24,8 @@ TagManager:
   - player
   - enemy
   - enemtattack
-  - 
-  - 
+  - prop
+  - triggerBox
   - 
   - 
   - 
@@ -61,4 +65,7 @@ TagManager:
     locked: 0
   - name: enemy
     uniqueID: 1199571271
+    locked: 0
+  - name: prop
+    uniqueID: 2230678607
     locked: 0

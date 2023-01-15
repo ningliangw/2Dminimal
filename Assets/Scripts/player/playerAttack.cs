@@ -38,6 +38,7 @@ public class playerAttack : MonoBehaviour
             StartCoroutine(StartAttack());
             anim.SetBool("isattacking", true);
             attackMusic.Play();
+            SoundMananger.instance.PlayerAttack();
 
         }
     }
