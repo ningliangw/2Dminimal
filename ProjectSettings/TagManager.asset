@@ -15,6 +15,7 @@ TagManager:
   - rib
   - eyeball
   - archivePoint
+  - eyeBoss
   layers:
   - Default
   - TransparentFX
