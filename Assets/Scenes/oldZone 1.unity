@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 19154180}
   - component: {fileID: 19154182}
   - component: {fileID: 19154181}
+  m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
