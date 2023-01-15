@@ -16,6 +16,7 @@ public class player : MonoBehaviour
     public GameObject body;
     public GameObject enemy;
     public AudioSource JumpMusic;
+    public Vector2 respawnPosition;//复活点
     public float playerSpeed = 4f;
     public float jumpforce;
     public float dashSpeed;
@@ -48,6 +49,7 @@ public class player : MonoBehaviour
         anim = GetComponent<Animator>();
         Feet = GetComponent<BoxCollider2D>();
         playerPS = GameObject.FindGameObjectWithTag("Player").GetComponent<ParticleSystem>();
+        respawnPosition = transform.position;//游戏刚开始时，玩家的重生点，就是当前的初始位置点
     }
 
     // Update is called once per frame
@@ -263,6 +265,12 @@ public class player : MonoBehaviour
         if (collision.gameObject.CompareTag("eyeball"))
         {
             canDash = true;
+        }
+
+        //存档点
+        if (collision.gameObject.CompareTag("archivePoint"))
+        {
+            respawnPosition = collision.transform.position;
         }
     }
 }
