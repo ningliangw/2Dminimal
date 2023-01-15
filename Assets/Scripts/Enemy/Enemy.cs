@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public float DieTime;
     public float flashTime;
     public bool HaveTaken = false;
-
+    public float repel;
     private Rigidbody2D rb;
     private Transform playertransform;
     private playerHealth playerHealth;

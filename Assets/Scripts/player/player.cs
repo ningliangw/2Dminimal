@@ -35,13 +35,16 @@ public class player : MonoBehaviour
     private bool canDefend = false;//ÅÐ¶ÏÊÇ·ñÄÜÊ¹ÓÃ»¤¶Ü
     private bool can_Suspend = false;//ÅÐ¶ÏÄÜ·ñÐü¸¡
     private bool canDash = false;//ÅÐ¶ÏÄÜ·ñ³å´Ì
+    private bool isEnable = false;
     private float jumpPreinput = 0f;
+    //private PolygonCollider2D poly;
     private bool isDashing = false;//ÅÐ¶ÏÊÇ·ñ´¦ÓÚ³å´Ì×´Ì¬
 
 
     private float facedirection;
     void Start()
     {
+       // poly = GetComponent<PolygonCollider2D>();
         dashObj = transform.GetChild(1).gameObject;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -53,13 +56,17 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDefend)
+        transform.localRotation = new Quaternion(0, 0, 0, 0);
+        if (!isDefend&&!isEnable)
         {
             Movement();
             Dash();
         }
+        if (!isEnable)
+        {
             Suspend();
-        Defend();
+            Defend();
+        }
         falljudge();
         hurtjudge();
     }
@@ -86,7 +93,6 @@ public class player : MonoBehaviour
     }
     void Movement()
     {
-        transform.localRotation = new Quaternion(0, 0, 0, 0);
         float horizontalmove = Input.GetAxis("Horizontal");
         facedirection = Input.GetAxisRaw("Horizontal");
 
@@ -230,7 +236,10 @@ public class player : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.None;//½â¶³
         }
     }
-
+    void RecoveyEnable()
+    {
+        isEnable = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)//Åö×²´¥·¢Æ÷
     {
        if (collision.gameObject.CompareTag("enemies")|| collision.gameObject.CompareTag("crycry"))
@@ -241,6 +250,12 @@ public class player : MonoBehaviour
                 Enemy y = collision.GetComponent<Enemy>();
                 isHurt = true;
                 anim.SetBool("hurt", true);
+                if (collision.gameObject.layer == 11)
+                {
+                    isEnable = true;
+                    rb.velocity = new Vector2(y.repel, rb.velocity.y);
+                    Invoke("RecoveyEnable", 2f);
+                }
                 SoundMananger.instance.PlayerHurt();//ÒôÐ§
                 beHurtTime = 0f;
                 x.DamagePlayer(y.damage);

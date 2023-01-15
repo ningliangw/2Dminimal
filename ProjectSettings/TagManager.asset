@@ -14,6 +14,7 @@ TagManager:
   - hand
   - rib
   - eyeball
+  - traiy
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - enemtattack
   - prop
   - triggerBox
-  - 
+  - traries
   - 
   - 
   - 

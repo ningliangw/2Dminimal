@@ -171,8 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!114 &17103366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +194,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!60 &17103367
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -758,6 +761,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0.1
   HaveTaken: 0
+  repel: 0
 --- !u!1 &32759552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,8 +1400,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &405033372
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1636,6 +1642,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &405033374
 Animator:
   serializedVersion: 3
@@ -5974,8 +5981,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &475225908
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6213,6 +6222,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &475225910
 Animator:
   serializedVersion: 3
@@ -6352,8 +6362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &492413159
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6591,6 +6603,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &492413161
 Animator:
   serializedVersion: 3
@@ -6807,8 +6820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!114 &641339766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6828,6 +6843,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!60 &641339767
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7375,6 +7391,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &674040392
 Animator:
   serializedVersion: 3
@@ -7696,8 +7713,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!1 &677418068
 GameObject:
   m_ObjectHideFlags: 0
@@ -7892,8 +7911,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &769442883
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8131,6 +8152,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &769442885
 Animator:
   serializedVersion: 3
@@ -8348,8 +8370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &815704319
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8587,6 +8611,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &815704321
 Animator:
   serializedVersion: 3
@@ -13566,8 +13591,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &983995698
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -13805,6 +13832,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &983995700
 Animator:
   serializedVersion: 3
@@ -14091,6 +14119,7 @@ MonoBehaviour:
     moveSpeed: 4
     chaseSpeed: 6
     idleTime: 2
+    radius: 0
     patrolPoints:
     - {fileID: 130807477}
     - {fileID: 1251811719}
@@ -14118,6 +14147,7 @@ MonoBehaviour:
   DieTime: 1
   flashTime: 0.1
   HaveTaken: 0
+  repel: 0
 --- !u!95 &1009729814
 Animator:
   serializedVersion: 3
@@ -14416,8 +14446,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!114 &1105296647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14437,6 +14469,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!60 &1105296648
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -14799,8 +14832,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &1165108901
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -15038,6 +15073,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &1165108903
 Animator:
   serializedVersion: 3
@@ -15310,8 +15346,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &1281143257
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -15548,6 +15586,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &1281143259
 Animator:
   serializedVersion: 3
@@ -15789,6 +15828,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!114 &1305695188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15987,8 +16027,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377178195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.9, y: -2.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -58.5, y: 25, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 2108987970}
   - {fileID: 836058337}
@@ -16275,7 +16315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416966318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.24, y: 0.93, z: 18.113352}
+  m_LocalPosition: {x: 7.14, y: 24.93, z: 18.113352}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 282712996}
@@ -16531,8 +16571,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!114 &1466115792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16552,6 +16594,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!60 &1466115793
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -16823,8 +16866,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &1565243291
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -17062,6 +17107,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &1565243293
 Animator:
   serializedVersion: 3
@@ -17201,8 +17247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &1569110610
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -17441,6 +17489,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &1569110612
 Animator:
   serializedVersion: 3
@@ -17836,6 +17885,7 @@ MonoBehaviour:
   DieTime: 1
   flashTime: 0.1
   HaveTaken: 0
+  repel: 0
 --- !u!114 &1874936473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17931,8 +17981,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &1922588362
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -18170,6 +18222,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &1922588364
 Animator:
   serializedVersion: 3
@@ -18309,8 +18362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!114 &1987583490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18330,6 +18385,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!60 &1987583491
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -18692,8 +18748,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &2097149463
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -18931,6 +18989,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &2097149465
 Animator:
   serializedVersion: 3
@@ -23874,8 +23933,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
-  time: 0
+  distancenow: 0
+  haveTaken: 0
+  Time: 0
+  times: 0
 --- !u!60 &2129213676
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -24113,6 +24174,7 @@ MonoBehaviour:
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
 --- !u!95 &2129213678
 Animator:
   serializedVersion: 3
@@ -24204,3 +24266,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &4995159072451356777
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4995159070735349973, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_Name
+      value: "traiy(\u51FB\u9000\uFF09"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.6734433
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995159070735349975, guid: ac9689decca297e48a170c4476a89e54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ac9689decca297e48a170c4476a89e54, type: 3}
