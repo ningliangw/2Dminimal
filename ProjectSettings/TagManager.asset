@@ -15,6 +15,7 @@ TagManager:
   - rib
   - eyeball
   - traiy
+  - archivePoint
   layers:
   - Default
   - TransparentFX
