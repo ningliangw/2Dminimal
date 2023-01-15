@@ -16,7 +16,6 @@ public class Parameter
     public float idleTime;
     public float radius;//¾àÀë
     public Transform[] patrolPoints;//Ñ²Âßµã
-    public Transform[] chasePoints; //×·×Ùµã
     public Transform target;
     public Animator anim;
 }
