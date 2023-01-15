@@ -31,6 +31,10 @@ public class player : MonoBehaviour
     private bool isHurt = false;//ÅÐ¶ÏÊÇ·ñÊÜÉË£¬Ä¬ÈÏÊÇfalse
     private bool isGround = true;//ÅÐ¶ÏÊÇ·ñ´¦ÓÚµØÃæ
     public bool isDefend = false;//ÅÐ¶ÏÊÇ·ñÎÞµÐ
+    private bool canJump = false;//ÅÐ¶ÏÄÜ·ñÌøÔ¾
+    private bool canDefend = false;//ÅÐ¶ÏÊÇ·ñÄÜÊ¹ÓÃ»¤¶Ü
+    private bool can_Suspend = false;//ÅÐ¶ÏÄÜ·ñÐü¸¡
+    private bool canDash = false;//ÅÐ¶ÏÄÜ·ñ³å´Ì
     private float jumpPreinput = 0f;
     private bool isDashing = false;//ÅÐ¶ÏÊÇ·ñ´¦ÓÚ³å´Ì×´Ì¬
 
@@ -108,7 +112,7 @@ public class player : MonoBehaviour
             rb.velocity = new Vector2(horizontalmove * playerSpeed, rb.velocity.y);
         }
         isGround = Feet.IsTouchingLayers(LayerMask.GetMask("ground"));
-        if (Input.GetButtonDown("Jump"))//ÌøÔ¾
+        if (Input.GetButtonDown("Jump") && canJump)//ÌøÔ¾
         {
             jumpPreinput = 0.18f;
         }
@@ -170,13 +174,13 @@ public class player : MonoBehaviour
     }
     void Dash()
     {
-        if (rb.velocity.y > jumpforce &&isDashing)
+        if (rb.velocity.y > jumpforce &&isDashing && canDash)
         {
             rb.velocity = new Vector2(rb.velocity.x,0.2f* jumpforce);
         }
         if (!isDashing)
         {
-            if (Input.GetButtonDown("dash"))
+            if (Input.GetButtonDown("dash") && canDash)
             {
                 dashObj.SetActive(true);
                 isDashing = true;
@@ -201,7 +205,7 @@ public class player : MonoBehaviour
 
     void Defend()
     {
-        if (Input.GetMouseButtonDown(1) && useDefendTime <= 0)
+        if (Input.GetMouseButtonDown(1) && useDefendTime <= 0 && canDefend)
         {
             isDefend = true;
             transform.GetChild(4).gameObject.SetActive(true);
@@ -210,7 +214,7 @@ public class player : MonoBehaviour
     }
     void Suspend() //Ðü¸¡
     {
-        if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1)
+        if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1 && can_Suspend)
         {
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//¶³½á
@@ -238,6 +242,22 @@ public class player : MonoBehaviour
             }
             
         }
-
+       //ÄÜÁ¦½âËø
+       if (collision.gameObject.CompareTag("Tentacle"))
+        {
+            canJump = true;
+        }
+        if (collision.gameObject.CompareTag("hand"))
+        {
+            canDefend = true;
+        }
+        if (collision.gameObject.CompareTag("rib"))
+        {
+            can_Suspend = true;
+        }
+        if (collision.gameObject.CompareTag("eyeball"))
+        {
+            canDash = true;
+        }
     }
 }
