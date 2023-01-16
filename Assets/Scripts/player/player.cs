@@ -120,7 +120,7 @@ public class player : MonoBehaviour
             rb.velocity = new Vector2(horizontalmove * playerSpeed, rb.velocity.y);
         }
         isGround = Feet.IsTouchingLayers(LayerMask.GetMask("ground"));
-        if (Input.GetButtonDown("Jump") && canJump)//ÌøÔ¾
+        if (Input.GetButtonDown("Jump")/* && canJump*/)//ÌøÔ¾
         {
             jumpPreinput = 0.18f;
         }

@@ -19,6 +19,11 @@ public class IdleState : IState//¿ÕÏĞ×´Ì¬
     public void OnUpdate()//Ö´ĞĞ
     {
         timer += Time.deltaTime;
+        Vector3 pos = manager.transform.position;
+        pos.y = parameter.target.position.y;
+
+        manager.transform.position = Vector2.MoveTowards(manager.transform.position,
+                pos, parameter.moveSpeed * Time.deltaTime);//µĞÈËÒÆ¶¯µ½Ñ²Âßµã
 
         if (timer >= parameter.idleTime)
         {
