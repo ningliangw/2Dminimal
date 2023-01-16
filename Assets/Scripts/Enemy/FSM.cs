@@ -15,7 +15,9 @@ public class Parameter
     public float chaseSpeed;        //追踪速度
     public float idleTime;
     public float radius;//距离
+    public float warningRadius;//预警距离（boss）
     public Transform[] patrolPoints;//巡逻点
+    public Transform startPoints;//起始点
     public Transform target;
     public Animator anim;
 }
