@@ -50,6 +50,11 @@ public class IdleState : IState//¿ÕÏÐ×´Ì¬
                 manager.TransitionState(StateType.Patrol);//×ª»»³ÉÑ²Âß×´Ì¬
             }
         }
+        if (manager.GetComponent<Enemy>().health < 0)
+        {
+
+            manager.TransitionState(StateType.Death);//×ª»»³ÉËÀÍö×´Ì¬
+        }
     }
     public void OnExit()//ÍË³ö
     {

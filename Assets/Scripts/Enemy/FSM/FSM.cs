@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum StateType//Ã¶¾Ù×´Ì¬ÀàĞÍ
 {
-    Idle, Patrol, Chase, Attack//¿ÕÏĞ£¬Ñ²Âß£¬×·×Ù£¬¹¥»÷
+    Idle, Patrol, Chase, Death//¿ÕÏĞ£¬Ñ²Âß£¬×·×Ù£¬ËÀÍö
 }
 
 [Serializable]//ĞòÁĞ»¯
@@ -34,6 +34,7 @@ public class FSM : MonoBehaviour//ÓĞÏŞ×´Ì¬»ú
         states.Add(StateType.Idle, new IdleState(this));//Ìí¼Ó×´Ì¬
         states.Add(StateType.Patrol, new PatrolState(this));
         states.Add(StateType.Chase, new ChaseState(this));
+        states.Add(StateType.Death, new DeathState(this));
 
         transform.DetachChildren();
 

@@ -39,7 +39,10 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
             manager.TransitionState(StateType.Chase);//×ª»»³É¹¥»÷×´Ì¬
             SoundMananger.instance.EnemyAttack();
         }
-
+        if (manager.GetComponent<Enemy>().health < 0)
+        {
+            manager.TransitionState(StateType.Death);//×ª»»³ÉËÀÍö×´Ì¬
+        }
     }
     public void OnExit()//ÍË³ö
     {

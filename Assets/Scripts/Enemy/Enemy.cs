@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
         }
         else if (health <= 0 && !HaveTaken)
         {
+            //transform.GetComponent<FSM>().enabled = false;
             health = 0;
             isdied = true;
             Isdie();
@@ -58,12 +59,9 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0 && !HaveTaken)
         {
+            
             rb.velocity = new Vector2(0, 0);
             HaveTaken = true;
-            if (transform.GetChild(0) != null)
-            {
-                transform.GetChild(0).gameObject.SetActive(false);
-            }
             anim.SetTrigger("die");
             //     deathAudio.Play();
             Invoke("Killer", DieTime);//
@@ -77,6 +75,10 @@ public class Enemy : MonoBehaviour
             if (y > 27)
             {
                 //            sceneTransform.GetComponent<scenetransform>().enabled = true;
+            }
+            if (transform.GetChild(0) != null)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }

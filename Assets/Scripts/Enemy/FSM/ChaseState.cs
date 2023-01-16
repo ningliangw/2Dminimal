@@ -19,12 +19,7 @@ public class ChaseState : IState//×·×Ù×´Ì¬
     public void OnUpdate()//Ö´ÐÐ
     {
         AnimatorStateInfo info = parameter.anim.GetCurrentAnimatorStateInfo(0);
-        /*if (manager.tag == "eyeboss")
-        {
-            Vector3 pos = manager.transform.position;
-            pos.y = parameter.target.position.y;
-            manager.transform.position = pos;
-        }*/
+        
         if (info.normalizedTime >= 1f)
         {
             manager.Flip(parameter.patrolPoints[patrolPosition]);//µÐÈË³¯Ïò
@@ -38,6 +33,10 @@ public class ChaseState : IState//×·×Ù×´Ì¬
             {
                 manager.TransitionState(StateType.Idle);//×ª»»³É¿ÕÏÐ×´Ì¬
             }
+        }
+        if (manager.GetComponent<Enemy>().health < 0)
+        {
+            manager.TransitionState(StateType.Death);//×ª»»³ÉËÀÍö×´Ì¬
         }
 
     }

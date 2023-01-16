@@ -183,9 +183,11 @@ MonoBehaviour:
     chaseSpeed: 4
     idleTime: 2
     radius: 0
+    warningRadius: 10000
     patrolPoints:
     - {fileID: 1862221618087911127}
     - {fileID: 1862221616588794819}
+    startPoints: {fileID: 0}
     target: {fileID: 0}
     anim: {fileID: 1862221617455073516}
 --- !u!114 &1862221617455073517
@@ -207,6 +209,7 @@ MonoBehaviour:
   DieTime: 1
   flashTime: 0.1
   HaveTaken: 0
+  repel: 0
 --- !u!95 &1862221617455073516
 Animator:
   serializedVersion: 3
