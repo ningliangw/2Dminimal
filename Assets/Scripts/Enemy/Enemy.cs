@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer sr;
     private Color originalColor;
     private bool isdied = false;
+    public GameObject getCollection;
 
     void Start()
     {
@@ -52,6 +53,10 @@ public class Enemy : MonoBehaviour
             //transform.GetComponent<FSM>().enabled = false;
             health = 0;
             isdied = true;
+            if (getCollection != null)
+            {
+                getCollection.SetActive(true);
+            }
             Isdie();
         }
     }
