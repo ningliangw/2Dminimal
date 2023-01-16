@@ -163,7 +163,7 @@ MonoBehaviour:
     moveSpeed: 10
     chaseSpeed: 50
     idleTime: 5
-    radius: 200
+    radius: 120
     warningRadius: 120
     patrolPoints:
     - {fileID: 4466268101640312841}
