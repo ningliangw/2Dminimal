@@ -15,6 +15,8 @@ public class player : MonoBehaviour
     private GameObject dashObj;
     public GameObject body;
     public GameObject enemy;
+    public float dashCD;
+    private float DashCD = 0;
     public AudioSource JumpMusic;
     public Vector2 respawnPosition;//复活点
     public float playerSpeed = 4f;
@@ -77,6 +79,7 @@ public class player : MonoBehaviour
     private void FixedUpdate()//固定刷新率。0.02s刷新一次,无敌时间，冷却时间，预输入部分
     {
         if (jumpPreinput > 0.08f) { jumpPreinput -= 0.02f; }
+        if (DashCD > 0f) { DashCD -= 0.02f; }
         beHurtTime += 0.02f;
         if (useDefendTime > 0f)
         {
@@ -189,11 +192,12 @@ public class player : MonoBehaviour
         }
         if (!isDashing)
         {
-            if (Input.GetButtonDown("dash") && canDash)
+            if (Input.GetButtonDown("dash") && canDash&&DashCD<=0)
             {
                 dashObj.SetActive(true);
                 isDashing = true;
                 startDashTimer = dashTime;
+                DashCD = dashCD;
                 SoundMananger.instance.PlayerDash();//音效
             }
         }
@@ -250,18 +254,21 @@ public class player : MonoBehaviour
             {
                 playerHealth x = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
                 Enemy y = collision.GetComponent<Enemy>();
-                isHurt = true;
-                anim.SetBool("hurt", true);
-                if (collision.gameObject.layer == 11)
+                if (y.health > 0)
                 {
-                    isEnable = true;
-                    rb.velocity = new Vector2(y.repel, rb.velocity.y);
-                    Invoke("RecoveyEnable", 2f);
+                    isHurt = true;
+                    anim.SetBool("hurt", true);
+                    if (collision.gameObject.layer == 11)
+                    {
+                        isEnable = true;
+                        rb.velocity = new Vector2(y.repel, rb.velocity.y);
+                        Invoke("RecoveyEnable", 2f);
+                    }
+                    SoundMananger.instance.PlayerHurt();//音效
+                    beHurtTime = 0f;
+                    x.DamagePlayer(y.damage);
+                    SoundMananger.instance.PlayerHurt();//音效
                 }
-                SoundMananger.instance.PlayerHurt();//音效
-                beHurtTime = 0f;
-                x.DamagePlayer(y.damage);
-                SoundMananger.instance.PlayerHurt();//音效
             }
             
         }

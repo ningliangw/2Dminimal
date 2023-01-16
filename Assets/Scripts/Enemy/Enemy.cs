@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     private playerHealth playerHealth;
     private SpriteRenderer sr;
     private Color originalColor;
-
     private bool isdied = false;
 
     void Start()
@@ -61,7 +60,12 @@ public class Enemy : MonoBehaviour
         {
             rb.velocity = new Vector2(0, 0);
             HaveTaken = true;
-       //     deathAudio.Play();
+            if (transform.GetChild(0) != null)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
+            anim.SetTrigger("die");
+            //     deathAudio.Play();
             Invoke("Killer", DieTime);//
             player x = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
             playerHealth z = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
