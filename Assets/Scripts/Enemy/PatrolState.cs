@@ -7,6 +7,7 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
     private FSM manager;
     private Parameter parameter;
     private int patrolPosition;
+   
     public PatrolState(FSM manager)
     {
         this.manager = manager;
@@ -46,6 +47,7 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
 
         if (patrolPosition >= parameter.patrolPoints.Length)//Ñ²ÂßµãÏÂ±ê³¬³ö
         {
+            //manager.transform.position = parameter.startPoints.position;
             patrolPosition = 0;
         }
     }
