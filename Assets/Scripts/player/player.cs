@@ -150,7 +150,7 @@ public class player : MonoBehaviour
     }
     IEnumerator EnableCollider()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
         transform.GetComponent<PolygonCollider2D>().enabled = true;
 
     }
