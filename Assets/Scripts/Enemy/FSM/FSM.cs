@@ -17,7 +17,6 @@ public class Parameter
     public float radius;//¾àÀë
     public float warningRadius;//Ô¤¾¯¾àÀë£¨boss£©
     public Transform[] patrolPoints;//Ñ²Âßµã
-    public Transform startPoints;//ÆğÊ¼µã
     public Transform target;
     public Animator anim;
 }

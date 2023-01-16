@@ -15,8 +15,8 @@ TagManager:
   - rib
   - eyeball
   - traiy
+  - platform
   - archivePoint
-  - eyeBoss
   layers:
   - Default
   - TransparentFX

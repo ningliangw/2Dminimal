@@ -135,7 +135,26 @@ public class player : MonoBehaviour
             JumpMusic.Play();
             SoundMananger.instance.PlayerJump();//音效
         }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1),
+                              Mathf.Infinity, LayerMask.GetMask("ground"));
+            if (hit.collider.CompareTag("platform"))//检测到平台
+            {
+                transform.GetComponent<PolygonCollider2D>().enabled = false;
+                StartCoroutine(EnableCollider());
+
+            }
+        }
+
     }
+    IEnumerator EnableCollider()
+    {
+        yield return new WaitForSeconds(0.7f);
+        transform.GetComponent<PolygonCollider2D>().enabled = true;
+
+    }
+
     void falljudge()
     {
         anim.SetBool("idel", false);
@@ -264,7 +283,7 @@ public class player : MonoBehaviour
                         rb.velocity = new Vector2(y.repel, rb.velocity.y);
                         Invoke("RecoveyEnable", 2f);
                     }
-                    SoundMananger.instance.PlayerHurt();//音效
+                    
                     beHurtTime = 0f;
                     x.DamagePlayer(y.damage);
                     SoundMananger.instance.PlayerHurt();//音效
