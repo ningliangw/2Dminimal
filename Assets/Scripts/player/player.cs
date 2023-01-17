@@ -127,9 +127,10 @@ public class player : MonoBehaviour
             rb.velocity = new Vector2(horizontalmove * playerSpeed, rb.velocity.y);
         }
         isGround = Feet.IsTouchingLayers(LayerMask.GetMask("ground"));
-        if (Input.GetButtonDown("Jump")/* && canJump*/)//Ã¯‘æ
+        if (Input.GetButtonDown("Jump") /*&& canJump*/)//Ã¯‘æ
         {
             jumpPreinput = 0.18f;
+            SoundMananger.instance.PlayerJump();//“Ù–ß
         }
         if (jumpPreinput > 0.1f && isGround)
         {
@@ -137,7 +138,6 @@ public class player : MonoBehaviour
             PPS();
             anim.SetBool("jumping", true);
             JumpMusic.Play();
-            SoundMananger.instance.PlayerJump();//“Ù–ß
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -164,7 +164,7 @@ public class player : MonoBehaviour
         anim.SetBool("idel", false);
         if (anim.GetBool("jumping") && rb.velocity.y <= 0)
         {
-            rb.gravityScale = 1.44f;
+            rb.gravityScale = 1.2f;
             anim.SetBool("jumping", false);
             anim.SetBool("falling", true);
         }
@@ -326,5 +326,6 @@ public class player : MonoBehaviour
         {
             respawnPosition = collision.transform.position;
         }
+
     }
 }
