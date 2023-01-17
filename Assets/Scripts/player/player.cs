@@ -15,6 +15,10 @@ public class player : MonoBehaviour
     private GameObject dashObj;
     public GameObject body;
     public GameObject enemy;
+    public GameObject tentacle;
+    public GameObject hand;
+    public GameObject rib;
+    public GameObject eyeball;
     public float dashCD;
     private float DashCD = 0;
     public AudioSource JumpMusic;
@@ -294,18 +298,22 @@ public class player : MonoBehaviour
        //ÄÜÁ¦½âËø
        if (collision.gameObject.CompareTag("Tentacle"))
         {
+            tentacle.SetActive(true);
             canJump = true;
         }
         if (collision.gameObject.CompareTag("hand"))
         {
+            hand.SetActive(true);
             canDefend = true;
         }
         if (collision.gameObject.CompareTag("rib"))
         {
+            rib.SetActive(true);
             can_Suspend = true;
         }
         if (collision.gameObject.CompareTag("eyeball"))
         {
+            eyeball.SetActive(true);
             canDash = true;
         }
 
