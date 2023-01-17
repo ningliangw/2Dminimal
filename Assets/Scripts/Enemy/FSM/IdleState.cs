@@ -22,7 +22,7 @@ public class IdleState : IState//¿ÕÏÐ×´Ì¬
     }
     public void OnUpdate()//Ö´ÐÐ
     {
-        float distance = Mathf.Abs(manager.transform.position.x - parameter.target.transform.position.x);
+        float distance = Mathf.Abs(manager.transform.position.y - parameter.target.transform.position.y);
         if (distance <= parameter.warningRadius)
         {
 
