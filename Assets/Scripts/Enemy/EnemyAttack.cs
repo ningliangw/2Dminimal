@@ -31,7 +31,6 @@ public class EnemyAttack : MonoBehaviour
                 anim.SetBool("attack", true);
                 StartCoroutine(StartAttack());
                 attackMusic.Play();
-                SoundMananger.instance.EnemyAttack();
             }
         }
     }
