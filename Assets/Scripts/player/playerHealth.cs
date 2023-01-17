@@ -38,7 +38,7 @@ public class playerHealth : MonoBehaviour
             Invoke("Killer", DieTime);
             
         }
-        else
+        else if(damage>0)
         {
             BlinkPlayer(Blinks, Time);
             Animator x = GameObject.FindGameObjectWithTag("player").GetComponent<Animator>();

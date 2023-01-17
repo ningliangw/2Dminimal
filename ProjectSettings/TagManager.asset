@@ -21,6 +21,7 @@ TagManager:
   - diary2
   - diary3
   - diary4
+  - finalboss
   layers:
   - Default
   - TransparentFX

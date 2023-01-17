@@ -53,10 +53,6 @@ public class Enemy : MonoBehaviour
             transform.GetComponent<FSM>().enabled = false;
             health = 0;
             isdied = true;
-            if (getCollection != null)
-            {
-                getCollection.SetActive(true);
-            }
             Isdie();
         }
     }
@@ -64,7 +60,11 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0 && !HaveTaken)
         {
-            
+            if (getCollection != null)
+            {
+                getCollection.SetActive(true);
+            }
+
             rb.velocity = new Vector2(0, 0);
             HaveTaken = true;
             anim.SetTrigger("die");
