@@ -277,7 +277,7 @@ public class player : MonoBehaviour
                 {
                     isHurt = true;
                     anim.SetBool("hurt", true);
-                    if (collision.gameObject.layer == 11)
+                    if (collision.gameObject.layer == 11&&y.repel!=0)
                     {
                         isEnable = true;
                         rb.velocity = new Vector2(y.repel, rb.velocity.y);
