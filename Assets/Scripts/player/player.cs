@@ -164,7 +164,7 @@ public class player : MonoBehaviour
         anim.SetBool("idel", false);
         if (anim.GetBool("jumping") && rb.velocity.y <= 0)
         {
-            rb.gravityScale = 1.44f;
+            rb.gravityScale = 1.2f;
             anim.SetBool("jumping", false);
             anim.SetBool("falling", true);
         }
@@ -222,7 +222,6 @@ public class player : MonoBehaviour
                 isDashing = true;
                 startDashTimer = dashTime;
                 DashCD = dashCD;
-                SoundMananger.instance.PlayerDash();//音效
             }
         }
         else
@@ -245,10 +244,10 @@ public class player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && useDefendTime <= 0 && canDefend)
         {
+            SoundMananger.instance.PlayerShield();
             isDefend = true;
             transform.GetChild(4).gameObject.SetActive(true);
             useDefendTime = 10f;
-            SoundMananger.instance.PlayerDefend();//音效
         }
     }
     void Suspend() //悬浮
@@ -258,7 +257,6 @@ public class player : MonoBehaviour
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
             hideTimer = Time.time + suspendTime;//经过悬浮时间后
-            SoundMananger.instance.PlayerSuspend();//音效
 
         }
         if (Time.time >= hideTimer)

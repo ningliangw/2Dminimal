@@ -26,18 +26,6 @@ public class SoundMananger : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PlayerDash()
-    {
-        audioSource.clip = playerDash;
-        audioSource.Play();
-    }
-
-    public void PlayerSuspend()
-    {
-        audioSource.clip = playerSuspend;
-        audioSource.Play();
-    }
-
     public void PlayerAttack()
     {
         audioSource.clip = playerAttack;
@@ -63,22 +51,10 @@ public class SoundMananger : MonoBehaviour
         audioSource.clip = playerShield;
         audioSource.Play();
     }
-
-    public void PlayerDefend()
+    public void PlayerDevour()
     {
-        audioSource.clip = playerDefend;
+        audioSource.clip = playerDevour;
         audioSource.Play();
     }
 
-    public void EnemyHurt()
-    {
-        audioSource.clip = enemyHurt;
-        audioSource.Play();
-    }
-
-    public void EnemyAttack()
-    {
-        audioSource.clip = enemyAttack;
-        audioSource.Play();
-    }
 }

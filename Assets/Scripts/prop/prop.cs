@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class prop : MonoBehaviour
 {
+    public GameObject button;
     public GameObject diary1;
-    public GameObject diary1Button;
     public GameObject diary2;
-    public GameObject diary2Button;
     public GameObject diary3;
-    public GameObject diary3Button;
     public GameObject diary4;
-    public GameObject diary4Button;
+    public GameObject tentacle2;
+    public GameObject ring;
+    public GameObject eyeball2;
+    public GameObject spine;
+    public GameObject vertebra;
 
     public void OpenDiary1()
     {
@@ -54,15 +56,62 @@ public class prop : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void OpenTentacle2()
+    {
+        tentacle2.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void CloseTentacle2()
+    {
+        tentacle2.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void OpenRing()
+    {
+        ring.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void CloseRing()
+    {
+        ring.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void OpenEyeball2()
+    {
+        eyeball2.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void CloseEyeball2()
+    {
+        eyeball2.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void OpenSpine()
+    {
+        spine.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void CloseSpine()
+    {
+        spine.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void OpenVertebra()
+    {
+        vertebra.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void CloseVertebra()
+    {
+        vertebra.SetActive(false);
+        Time.timeScale = 1f;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("player"))
         {
             Destroy(gameObject);
-            if (diary1.CompareTag("diary1")) diary1Button.SetActive(true);
-            if (diary1.CompareTag("diary2")) diary2Button.SetActive(true);
-            if (diary1.CompareTag("diary3")) diary3Button.SetActive(true);
-            if (diary1.CompareTag("diary4")) diary4Button.SetActive(true);
+            button.SetActive(true);
         }
     }
 
