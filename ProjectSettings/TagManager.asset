@@ -17,10 +17,7 @@ TagManager:
   - traiy
   - platform
   - archivePoint
-  - diary1
-  - diary2
-  - diary3
-  - diary4
+  - deathLine
   layers:
   - Default
   - TransparentFX
