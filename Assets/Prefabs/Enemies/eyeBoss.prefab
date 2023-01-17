@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 4466268100856851153}
   - component: {fileID: 4466268100856851150}
   - component: {fileID: 4466268100856851151}
-  - component: {fileID: 3165963579368451283}
   m_Layer: 7
   m_Name: eyeBoss
   m_TagString: enemies
@@ -164,8 +163,8 @@ MonoBehaviour:
     moveSpeed: 10
     chaseSpeed: 50
     idleTime: 5
-    radius: 40
-    warningRadius: 30
+    radius: 20
+    warningRadius: 10
     patrolPoints:
     - {fileID: 4466268101640312841}
     - {fileID: 4466268101172018311}
@@ -341,27 +340,6 @@ PolygonCollider2D:
       - {x: 0.5, y: 7.625}
       - {x: 0.5, y: 7.75}
       - {x: 0.3125, y: 7.8125}
---- !u!50 &3165963579368451283
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4466268100856851148}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &4466268101172018308
 GameObject:
   m_ObjectHideFlags: 0
