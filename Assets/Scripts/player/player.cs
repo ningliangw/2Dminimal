@@ -290,6 +290,10 @@ public class player : MonoBehaviour
                     
                     beHurtTime = 0f;
                     x.DamagePlayer(y.damage);
+                    if (y.health <= 0)
+                    {
+                        DashCD = 0;
+                    }
                     SoundMananger.instance.PlayerHurt();//ÒôÐ§
                 }
             }

@@ -12,6 +12,7 @@ public class FinalBoss : MonoBehaviour
     public float waitTime;
     public float startTime;
     public float tempTime;
+    public float Time3;
     public float restTime;
     private bool haveTaken = false;
     private Transform playertransform;//player的坐标
@@ -96,6 +97,53 @@ public class FinalBoss : MonoBehaviour
                 transform.GetChild(i).gameObject.SetActive(false);
             }//4
             yield return new WaitForSeconds(restTime);
+            this.transform.localPosition = new Vector3(-129,-328, this.transform.localPosition.z);//下一阶段
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 1; i <= 9; i++)
+            {
+                transform.GetChild(34).gameObject.SetActive(true);
+                yield return new WaitForSeconds(waitTime);
+                transform.GetChild(34).gameObject.SetActive(false);
+                transform.GetChild(34).localPosition = new Vector3(transform.GetChild(34).localPosition.x, transform.GetChild(34).localPosition.y+12, transform.GetChild(34).localPosition.z);
+            }
+            transform.GetChild(34).localPosition = new Vector3(transform.GetChild(34).localPosition.x, transform.GetChild(34).localPosition.y - 12*9, transform.GetChild(34).localPosition.z);//1
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 35; i <= 44; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 35; i <= 44; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+                transform.GetChild(i).localPosition = new Vector3(transform.GetChild(i).localPosition.x-12, transform.GetChild(i).localPosition.y, transform.GetChild(i).localPosition.z);
+            }
+            for (int i = 36; i <= 45; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }//3
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 35; i <= 45; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+                transform.GetChild(i).localPosition = new Vector3(transform.GetChild(i).localPosition.x + 12, transform.GetChild(i).localPosition.y, transform.GetChild(i).localPosition.z);
+            }
+            transform.GetChild(45).localPosition = new Vector3(transform.GetChild(45).localPosition.x - 12, transform.GetChild(45).localPosition.y, transform.GetChild(45).localPosition.z);
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 46; i <= 49; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+                yield return new WaitForSeconds(waitTime);
+            }
+            for (int i = 46; i <= 49; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }//4
+            yield return new WaitForSeconds(restTime);
+            this.transform.localPosition = new Vector3(-129, -346, this.transform.localPosition.z);//下一阶段
+            yield return new WaitForSeconds(waitTime);
+            this.transform.localPosition = new Vector3(-174, -306, this.transform.localPosition.z);
+            yield return new WaitForSeconds(tempTime);
         }
     }
     IEnumerator Waitfortime(float time)
