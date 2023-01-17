@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     private Animator anim;
    // public GameObject sceneTransform;
     public AudioSource deathAudio;
+    public AudioSource hurtAudio;
     public int health;
     public int damage;
     public int score;
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         deathAudio = GetComponent<AudioSource>();
+        hurtAudio = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
         playertransform = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
@@ -46,11 +48,12 @@ public class Enemy : MonoBehaviour
         {
             health -= damage;
             FlashColor(flashTime);
-            SoundMananger.instance.EnemyHurt();
+            hurtAudio.Play();
+
         }
         else if (health <= 0 && !HaveTaken)
         {
-            transform.GetComponent<FSM>().enabled = false;
+            //transform.GetComponent<FSM>().enabled = false;
             health = 0;
             isdied = true;
             Isdie();
@@ -75,6 +78,8 @@ public class Enemy : MonoBehaviour
             z.HP = 3;
             GameObject.FindGameObjectWithTag("player").GetComponent<Animator>().SetTrigger("devour");
             GameObject.FindGameObjectWithTag("player").GetComponent<Animator>().SetBool("isdevouring", true);
+            deathAudio.Play();
+            SoundMananger.instance.PlayerDevour();
             x.collectionsget += score;
             int y = x.collectionsget;
             if (y > 27)
