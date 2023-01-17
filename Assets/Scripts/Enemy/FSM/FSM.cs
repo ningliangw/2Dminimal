@@ -19,6 +19,8 @@ public class Parameter
     public Transform[] patrolPoints;//Ñ²Âßµã
     public Transform target;
     public Animator anim;
+    public AudioSource moveAudio;
+    public AudioSource attackAudio;
 }
 
 

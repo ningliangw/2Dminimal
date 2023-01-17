@@ -176,7 +176,8 @@ public class player : MonoBehaviour
         }
         else   if (anim.GetBool("onGround"))
         {
-           AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
+            SoundMananger.instance.PlayerFall();
+            AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.2f)
             {
                 anim.SetBool("onGround", false);

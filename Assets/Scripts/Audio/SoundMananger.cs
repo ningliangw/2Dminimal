@@ -7,7 +7,7 @@ public class SoundMananger : MonoBehaviour
     public static SoundMananger instance;//µ¥Àý
     public AudioSource audioSource;
     [SerializeField]
-    private AudioClip playerJump, playerHurt, playerAttack, playerDevour;
+    private AudioClip playerJump, playerHurt, playerAttack, playerDevour, playerFall, playerDeath, playerResurrect, playerShield;
 
     private void Awake()
     {
@@ -35,6 +35,26 @@ public class SoundMananger : MonoBehaviour
     public void PlayerAttack()
     {
         audioSource.clip = playerAttack;
+        audioSource.Play();
+    }
+    public void PlayerFall()
+    {
+        audioSource.clip = playerFall;
+        audioSource.Play();
+    }
+    public void PlayerDeath()
+    {
+        audioSource.clip = playerDeath;
+        audioSource.Play();
+    }
+    public void PlayerResurrect()
+    {
+        audioSource.clip = playerResurrect;
+        audioSource.Play();
+    }
+    public void PlayerShield()
+    {
+        audioSource.clip = playerShield;
         audioSource.Play();
     }
 

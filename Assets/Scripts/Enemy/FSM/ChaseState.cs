@@ -15,6 +15,7 @@ public class ChaseState : IState//×·×Ù×´Ì¬
     public void OnEnter()//½øÈë
     {
         parameter.anim.Play("attack");
+        parameter.attackAudio.Play();
     }
     public void OnUpdate()//Ö´ÐÐ
     {

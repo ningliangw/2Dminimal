@@ -18,7 +18,7 @@ public class IdleState : IState//¿ÕÏĞ×´Ì¬
     public void OnEnter()//½øÈë
     {
         parameter.anim.Play("idle");
-
+        parameter.moveAudio.Play();
     }
     public void OnUpdate()//Ö´ĞĞ
     {

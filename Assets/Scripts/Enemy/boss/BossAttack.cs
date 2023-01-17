@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class BossAttack : MonoBehaviour
 {
     private PolygonCollider2D coll2D;
+    public AudioSource attackAudio;
     public float distancenow;//距离
     private Transform playertransform;//player的坐标
     public bool haveTaken = false;
@@ -25,6 +26,7 @@ public class BossAttack : MonoBehaviour
             if (distance <= distancenow)//玩家进入巡逻
             {
                 haveTaken = true;
+                attackAudio.Play();
                 StartCoroutine(Active());
             }
         }
