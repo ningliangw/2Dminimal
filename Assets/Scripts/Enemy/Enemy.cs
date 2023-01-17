@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
         }
         else if (health <= 0 && !HaveTaken)
         {
-            //transform.GetComponent<FSM>().enabled = false;
+            transform.GetComponent<FSM>().enabled = false;
             health = 0;
             isdied = true;
             if (getCollection != null)
