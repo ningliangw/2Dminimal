@@ -12,6 +12,7 @@ public class playerAttack : MonoBehaviour
 
     private Animator anim;
     private PolygonCollider2D coll2D;
+    public AudioSource attackMusic;
     void Start()
     {
 
@@ -36,6 +37,7 @@ public class playerAttack : MonoBehaviour
             anim.SetTrigger("attack");
             StartCoroutine(StartAttack());
             anim.SetBool("isattacking", true);
+            attackMusic.Play();
             SoundMananger.instance.PlayerAttack();
 
         }
