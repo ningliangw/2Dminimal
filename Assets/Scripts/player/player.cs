@@ -221,7 +221,6 @@ public class player : MonoBehaviour
                 isDashing = true;
                 startDashTimer = dashTime;
                 DashCD = dashCD;
-                SoundMananger.instance.PlayerDash();//音效
             }
         }
         else
@@ -247,7 +246,6 @@ public class player : MonoBehaviour
             isDefend = true;
             transform.GetChild(4).gameObject.SetActive(true);
             useDefendTime = 10f;
-            SoundMananger.instance.PlayerDefend();//音效
         }
     }
     void Suspend() //悬浮
@@ -257,7 +255,6 @@ public class player : MonoBehaviour
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
             hideTimer = Time.time + suspendTime;//经过悬浮时间后
-            SoundMananger.instance.PlayerSuspend();//音效
 
         }
         if (Time.time >= hideTimer)

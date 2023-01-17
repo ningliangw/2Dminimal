@@ -46,7 +46,6 @@ public class Enemy : MonoBehaviour
         {
             health -= damage;
             FlashColor(flashTime);
-            SoundMananger.instance.EnemyHurt();
         }
         else if (health <= 0 && !HaveTaken)
         {
