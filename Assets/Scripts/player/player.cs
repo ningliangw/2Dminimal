@@ -162,7 +162,7 @@ public class player : MonoBehaviour
     void falljudge()
     {
         anim.SetBool("idel", false);
-        if (anim.GetBool("jumping") && rb.velocity.y <= 0)
+        if (anim.GetBool("jumping") && rb.velocity.y <= 1.2)
         {
             rb.gravityScale = 1.44f;
             anim.SetBool("jumping", false);
