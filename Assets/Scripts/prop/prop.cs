@@ -14,7 +14,7 @@ public class prop : MonoBehaviour
     public GameObject eyeball2;
     public GameObject spine;
     public GameObject vertebra;
-
+    public bool canAttack = true;
     public void OpenDiary1()
     {
         diary1.SetActive(true);

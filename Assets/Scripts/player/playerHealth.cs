@@ -27,6 +27,7 @@ public class playerHealth : MonoBehaviour
     {
         if (HP - damage >= 0)
         {
+            SoundMananger.instance.PlayerHurt();
             HP -= damage;
         }
         else

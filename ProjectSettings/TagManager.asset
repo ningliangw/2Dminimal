@@ -19,6 +19,10 @@ TagManager:
   - archivePoint
   - finalboss
   - deathLine
+  - bgm1
+  - bgm2
+  - bgm3
+  - bgm4
   layers:
   - Default
   - TransparentFX
