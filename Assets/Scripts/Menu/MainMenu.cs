@@ -15,8 +15,8 @@ public class MainMenu : MonoBehaviour
     public int hur=-1;
     public void PlayGame1()
     {
-        hp = 4;
-            SceneManager.LoadScene(1);
+        hp = 5;
+        SceneManager.LoadScene(1);
     }
     public void PlayGame2()
     {
