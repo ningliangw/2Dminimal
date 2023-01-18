@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     public AudioSource hurtAudio;
     public int health;
     public int damage;
-    public int score;
     public float DieTime;
     public float flashTime;
     public bool HaveTaken = false;
@@ -53,7 +52,7 @@ public class Enemy : MonoBehaviour
         }
         else if (health <= 0 && !HaveTaken)
         {
-            //transform.GetComponent<FSM>().enabled = false;
+            transform.GetComponent<FSM>().enabled = false;
             health = 0;
             isdied = true;
             Isdie();
@@ -80,12 +79,6 @@ public class Enemy : MonoBehaviour
             GameObject.FindGameObjectWithTag("player").GetComponent<Animator>().SetBool("isdevouring", true);
             deathAudio.Play();
             SoundMananger.instance.PlayerDevour();
-            x.collectionsget += score;
-            int y = x.collectionsget;
-            if (y > 27)
-            {
-                //            sceneTransform.GetComponent<scenetransform>().enabled = true;
-            }
             if (transform.GetChild(0) != null)
             {
                 transform.GetChild(0).gameObject.SetActive(false);

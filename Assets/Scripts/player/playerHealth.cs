@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class playerHealth : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class playerHealth : MonoBehaviour
     private Renderer myRender;
     void Start()
     {
+        HP= GameObject.Find("54321").GetComponent<transform>().hp;
         maxHP = HP;
         myRender = GetComponent<Renderer>();
         
@@ -27,6 +29,7 @@ public class playerHealth : MonoBehaviour
     {
         if (HP - damage >= 0)
         {
+            SoundMananger.instance.PlayerHurt();
             HP -= damage;
         }
         else
@@ -36,10 +39,11 @@ public class playerHealth : MonoBehaviour
         if (HP <= 0)
         {
             isdied = true;
-            health.SetActive(true);
             SoundMananger.instance.PlayerDeath();
             Invoke("Killer", DieTime);
-            
+            GameObject.Find("Main Camera").transform.Find("death").gameObject.SetActive(true);
+            health.SetActive(true);
+
         }
         else
         {
@@ -63,9 +67,10 @@ public class playerHealth : MonoBehaviour
     void Killer()
     {
         transform.position = GameObject.FindGameObjectWithTag("player").GetComponent<player>().respawnPosition;
-        HP = maxHP;
-        health.SetActive(false);
+        HP = 5;
         SoundMananger.instance.PlayerResurrect();
+        GameObject.Find("Main Camera").transform.Find("death").gameObject.SetActive(false);
+        health.SetActive(false);
     }
     void BlinkPlayer(int numBlinks, float seconds)
     {

@@ -14,6 +14,7 @@ public class player : MonoBehaviour
     private ParticleSystem playerPS;
     private GameObject dashObj;
     public GameObject body;
+    public int score = 0;
     public GameObject enemy;
     public GameObject tentacle;
     public GameObject hand;
@@ -25,10 +26,9 @@ public class player : MonoBehaviour
     public Vector2 respawnPosition;//复活点
     public float playerSpeed = 4f;
     public float jumpforce;
-    public float dashSpeed;
+    private float dashSpeed;
     public float beHurtTime;
     public float dashTime;
-    public int collectionsget = 0;
     private int canSuspend = 0;//悬浮判断
     private float hideTimer = 0f;//计时器
     private float suspendTime = 0.5f;//悬浮时间
@@ -37,21 +37,22 @@ public class player : MonoBehaviour
     public float useDefendTime = 0f;
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
-    public bool isDefend = false;//判断是否无敌
+    private bool isDefend = false;//判断是否无敌
     private bool canJump = false;//判断能否跳跃
     private bool canDefend = false;//判断是否能使用护盾
     private bool can_Suspend = false;//判断能否悬浮
     private bool canDash = false;//判断能否冲刺
     private bool isEnable = false;
     private float jumpPreinput = 0f;
-    //private PolygonCollider2D poly;
+    private bool istouchingground = false;
+    private CapsuleCollider2D cap;
     private bool isDashing = false;//判断是否处于冲刺状态
 
 
     private float facedirection;
     void Start()
     {
-       // poly = GetComponent<PolygonCollider2D>();
+        cap = GetComponent<CapsuleCollider2D>();
         dashObj = transform.GetChild(1).gameObject;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -96,6 +97,7 @@ public class player : MonoBehaviour
             {
                 defendTime = 1f;
                 isDefend = false;
+                hand.transform.GetChild(0).gameObject.SetActive(false);
                 transform.GetChild(4).gameObject.SetActive(false);
             }
         }
@@ -127,12 +129,19 @@ public class player : MonoBehaviour
             rb.velocity = new Vector2(horizontalmove * playerSpeed, rb.velocity.y);
         }
         isGround = Feet.IsTouchingLayers(LayerMask.GetMask("ground"));
+        istouchingground = cap.IsTouchingLayers(LayerMask.GetMask("ground"));
+        if (istouchingground)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
         if (Input.GetButtonDown("Jump")/* && canJump*/)//跳跃
         {
             jumpPreinput = 0.18f;
+            tentacle.transform.GetChild(0).gameObject.SetActive(true);
         }
         if (jumpPreinput > 0.1f && isGround)
         {
+            rb.gravityScale = 1f;
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
             PPS();
             anim.SetBool("jumping", true);
@@ -162,9 +171,9 @@ public class player : MonoBehaviour
     void falljudge()
     {
         anim.SetBool("idel", false);
-        if (anim.GetBool("jumping") && rb.velocity.y <= 0)
+        if (anim.GetBool("jumping") && rb.velocity.y <= 1.2)
         {
-            rb.gravityScale = 1.2f;
+            rb.gravityScale = 1.44f;
             anim.SetBool("jumping", false);
             anim.SetBool("falling", true);
         }
@@ -176,6 +185,7 @@ public class player : MonoBehaviour
         }
         else   if (anim.GetBool("onGround"))
         {
+            tentacle.transform.GetChild(0).gameObject.SetActive(false);
             SoundMananger.instance.PlayerFall();
             AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.2f)
@@ -218,6 +228,7 @@ public class player : MonoBehaviour
         {
             if (Input.GetButtonDown("dash") && canDash&&DashCD<=0)
             {
+                eyeball.transform.GetChild(0).gameObject.SetActive(true);
                 dashObj.SetActive(true);
                 isDashing = true;
                 startDashTimer = dashTime;
@@ -231,6 +242,7 @@ public class player : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x / dashSpeed, rb.velocity.y);
                 isDashing = false;
+                eyeball.transform.GetChild(0).gameObject.SetActive(false);
                 dashObj.SetActive(false);
             }
             else
@@ -244,6 +256,7 @@ public class player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && useDefendTime <= 0 && canDefend)
         {
+            hand.transform.GetChild(0).gameObject.SetActive(true);
             SoundMananger.instance.PlayerShield();
             isDefend = true;
             transform.GetChild(4).gameObject.SetActive(true);
@@ -254,6 +267,7 @@ public class player : MonoBehaviour
     {
         if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1 && can_Suspend)
         {
+            rib.transform.GetChild(0).gameObject.SetActive(true);
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
             hideTimer = Time.time + suspendTime;//经过悬浮时间后
@@ -262,6 +276,7 @@ public class player : MonoBehaviour
         if (Time.time >= hideTimer)
         {
             rb.constraints = RigidbodyConstraints2D.None;//解冻
+            rib.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
     void RecoveyEnable()
@@ -325,5 +340,11 @@ public class player : MonoBehaviour
         {
             respawnPosition = collision.transform.position;
         }
+
+        //bgm
+        if (collision.gameObject.CompareTag("bgm1")) Bgm.instance.Bgm1();
+        if (collision.gameObject.CompareTag("bgm2")) Bgm.instance.Bgm2();
+        if (collision.gameObject.CompareTag("bgm3")) Bgm.instance.Bgm3();
+        if (collision.gameObject.CompareTag("bgm4")) Bgm.instance.Bgm4();
     }
 }

@@ -9,7 +9,6 @@ public class EnemyBoss : MonoBehaviour
     public float distancenow;//距离
     public AudioSource attackMusic;//音效
     public float waitTime;
-    public float startTime;
     public float temptime;
     private GameObject child1,child0;
     private bool haveTaken = false;
@@ -25,7 +24,7 @@ public class EnemyBoss : MonoBehaviour
         if (playertransform != null&&!haveTaken)
         {
             float distance = Mathf.Abs(transform.position.x - playertransform.position.x);//玩家和敌人的距离。为一个
-            if (distance <=distancenow)//玩家进入巡逻半径
+            if (distance <= distancenow && Mathf.Abs(transform.position.y - playertransform.position.y) <= 40)//玩家进入巡逻半径
             {
                // attackMusic.Play();
                 haveTaken = true;

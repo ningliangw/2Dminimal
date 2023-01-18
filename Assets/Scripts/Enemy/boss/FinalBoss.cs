@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class FinalBoss : MonoBehaviour
 {
     public float distancenow;//距离
-    public AudioSource attackMusic;//音效
+    public AudioSource wake;//音效
     public float waitTime;
     public float startTime;
     public float tempTime;
@@ -40,11 +40,11 @@ public class FinalBoss : MonoBehaviour
         if (playertransform != null && !haveTaken)
         {
             float distance = Mathf.Abs(transform.position.x - playertransform.position.x);//玩家和敌人的距离。
-            if (distance <= distancenow)//玩家进入巡逻半径
+            if (distance <= distancenow && Mathf.Abs(transform.position.y - playertransform.position.y) <= 50)//玩家进入巡逻半径
             {
-                // attackMusic.Play();
                 haveTaken = true;
                 StartCoroutine(Round2());
+                wake.Play();
             }
         }
     }
@@ -64,7 +64,7 @@ public class FinalBoss : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }//1
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(restTime);
             for (int i = 3; i < 6; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
@@ -79,7 +79,7 @@ public class FinalBoss : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(true);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.7f);
             for (int i = 6; i < 14; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(false);
@@ -98,7 +98,7 @@ public class FinalBoss : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(true);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.7f);
             for (int i = 20; i < 28; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(false);
@@ -112,8 +112,7 @@ public class FinalBoss : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }//4
-            yield return new WaitForSeconds(restTime);
-            this.transform.localPosition = new Vector3(-129,-328, this.transform.localPosition.z);//下一阶段
+            this.transform.localPosition = new Vector3(-129,-328, this.transform.localPosition.z);//下一阶段2
             yield return new WaitForSeconds(waitTime);
             for (int i = 1; i <= 9; i++)
             {
@@ -185,7 +184,6 @@ public class FinalBoss : MonoBehaviour
             this.transform.localPosition = new Vector3(-129, -364, this.transform.localPosition.z);//下一阶段
             yield return new WaitForSeconds(Time3);
             this.transform.localPosition = new Vector3(-129, -382, this.transform.localPosition.z);//下一阶段
-            yield return new WaitForSeconds(waitTime);
 
             isChasing = true;
             yield return new WaitForSeconds(waitTime);
@@ -208,7 +206,7 @@ public class FinalBoss : MonoBehaviour
             {
                 myself.transform.GetChild(i).gameObject.SetActive(true);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.7f);
             for (int i = 6; i < 14; i++)
             {
                 myself.transform.GetChild(i).gameObject.SetActive(false);
@@ -372,7 +370,6 @@ public class FinalBoss : MonoBehaviour
             this.transform.localPosition = new Vector3(-129, -364, this.transform.localPosition.z);//下一阶段
             yield return new WaitForSeconds(Time3);
             this.transform.localPosition = new Vector3(-129, -382, this.transform.localPosition.z);//下一阶段
-            yield return new WaitForSeconds(waitTime);
 
             isChasing = true;
             yield return new WaitForSeconds(waitTime);
@@ -395,7 +392,7 @@ public class FinalBoss : MonoBehaviour
             {
                 myself.transform.GetChild(i).gameObject.SetActive(true);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.7f);
             for (int i = 6; i < 14; i++)
             {
                 myself.transform.GetChild(i).gameObject.SetActive(false);

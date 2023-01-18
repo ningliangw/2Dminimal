@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 
 public class MainMenu : MonoBehaviour
@@ -11,16 +10,27 @@ public class MainMenu : MonoBehaviour
     public GameObject start;
     public GameObject setup;
     public GameObject production;
+    public AudioMixer audioMixer;
+    public int hp = 99999;
     public void PlayGame1()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        hp = 4;
+        SceneManager.LoadScene(1);
     }
     public void PlayGame2()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
-    // Start is called before the first frame update
-    public void QuitGame()
+    public void Transform2()
+    {
+        SceneManager.LoadScene(2);
+    }
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
+        // Start is called before the first frame update
+        public void QuitGame()
     {
         Application.Quit();
     }
@@ -57,6 +67,10 @@ public class MainMenu : MonoBehaviour
     public void CloseProduction()
     {
         production.SetActive(false);
+    }
+    public void SetVolumn(float value)
+    {
+        audioMixer.SetFloat("MainVolumn", value);
     }
     
 }
