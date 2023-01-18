@@ -40,7 +40,7 @@ public class FinalBoss : MonoBehaviour
         if (playertransform != null && !haveTaken)
         {
             float distance = Mathf.Abs(transform.position.x - playertransform.position.x);//玩家和敌人的距离。
-            if (distance <= distancenow)//玩家进入巡逻半径
+            if (distance <= distancenow && Mathf.Abs(transform.position.y - playertransform.position.y) <= 50)//玩家进入巡逻半径
             {
                 haveTaken = true;
                 StartCoroutine(Round2());
