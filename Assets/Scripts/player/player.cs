@@ -28,7 +28,6 @@ public class player : MonoBehaviour
     public float dashSpeed;
     public float beHurtTime;
     public float dashTime;
-    public int collectionsget = 0;
     private int canSuspend = 0;//Ðü¸¡ÅÐ¶Ï
     private float hideTimer = 0f;//¼ÆÊ±Æ÷
     private float suspendTime = 0.5f;//Ðü¸¡Ê±¼ä
@@ -133,6 +132,7 @@ public class player : MonoBehaviour
         }
         if (jumpPreinput > 0.1f && isGround)
         {
+            rb.gravityScale = 1f;
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
             PPS();
             anim.SetBool("jumping", true);
@@ -164,7 +164,7 @@ public class player : MonoBehaviour
         anim.SetBool("idel", false);
         if (anim.GetBool("jumping") && rb.velocity.y <= 0)
         {
-            rb.gravityScale = 1.2f;
+            rb.gravityScale = 1.44f;
             anim.SetBool("jumping", false);
             anim.SetBool("falling", true);
         }
