@@ -42,6 +42,7 @@ public class playerHealth : MonoBehaviour
             isdied = true;
             SoundMananger.instance.PlayerDeath();
             Invoke("Killer", DieTime);
+            transform.GetChild(5).gameObject.SetActive(true);
             health.SetActive(true);
 
         }
@@ -69,6 +70,7 @@ public class playerHealth : MonoBehaviour
         transform.position = GameObject.FindGameObjectWithTag("player").GetComponent<player>().respawnPosition;
         HP = 5;
         SoundMananger.instance.PlayerResurrect();
+        transform.GetChild(5).GetComponent<Animator>().enabled = false;
         health.SetActive(false);
     }
     void BlinkPlayer(int numBlinks, float seconds)
