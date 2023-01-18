@@ -135,8 +135,8 @@ public class player : MonoBehaviour
         }
         if (Input.GetButtonDown("Jump")/* && canJump*/)//ÌøÔ¾
         {
-            tentacle.transform.GetChild(0).gameObject.SetActive(true);
             jumpPreinput = 0.18f;
+            tentacle.transform.GetChild(0).gameObject.SetActive(true);
         }
         if (jumpPreinput > 0.1f && isGround)
         {
