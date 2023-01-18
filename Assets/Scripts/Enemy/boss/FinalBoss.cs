@@ -79,7 +79,7 @@ public class FinalBoss : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(true);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.7f);
             for (int i = 6; i < 14; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(false);
@@ -98,7 +98,7 @@ public class FinalBoss : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(true);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.7f);
             for (int i = 20; i < 28; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(false);
@@ -206,7 +206,7 @@ public class FinalBoss : MonoBehaviour
             {
                 myself.transform.GetChild(i).gameObject.SetActive(true);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.7f);
             for (int i = 6; i < 14; i++)
             {
                 myself.transform.GetChild(i).gameObject.SetActive(false);
@@ -392,7 +392,7 @@ public class FinalBoss : MonoBehaviour
             {
                 myself.transform.GetChild(i).gameObject.SetActive(true);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.7f);
             for (int i = 6; i < 14; i++)
             {
                 myself.transform.GetChild(i).gameObject.SetActive(false);
