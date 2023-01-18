@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class playerHealth : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class playerHealth : MonoBehaviour
     private Renderer myRender;
     void Start()
     {
+        HP= GameObject.Find("54321").GetComponent<transform>().hp;
+        GameObject.Find("54321").SetActive(false);
         maxHP = HP;
         myRender = GetComponent<Renderer>();
         
