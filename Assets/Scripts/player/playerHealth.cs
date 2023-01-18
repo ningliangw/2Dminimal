@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerHealth : MonoBehaviour
 {
+    public GameObject health;
     public float DieTime;
     public int HP;
     public int Blinks;
@@ -35,6 +36,8 @@ public class playerHealth : MonoBehaviour
         if (HP <= 0)
         {
             isdied = true;
+            health.SetActive(true);
+            SoundMananger.instance.PlayerDeath();
             Invoke("Killer", DieTime);
             
         }
@@ -61,6 +64,8 @@ public class playerHealth : MonoBehaviour
     {
         transform.position = GameObject.FindGameObjectWithTag("player").GetComponent<player>().respawnPosition;
         HP = maxHP;
+        health.SetActive(false);
+        SoundMananger.instance.PlayerResurrect();
     }
     void BlinkPlayer(int numBlinks, float seconds)
     {
@@ -74,5 +79,14 @@ public class playerHealth : MonoBehaviour
             yield return new WaitForSeconds(seconds);
         }
         myRender.enabled = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //掉落死亡
+        if (collision.gameObject.CompareTag("deathLine"))
+        {
+            Killer();
+        }
     }
 }

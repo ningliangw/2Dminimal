@@ -17,6 +17,8 @@ TagManager:
   - traiy
   - platform
   - archivePoint
+  - finalboss
+  - deathLine
   layers:
   - Default
   - TransparentFX
@@ -30,7 +32,7 @@ TagManager:
   - prop
   - triggerBox
   - traries
-  - 
+  - finalboss
   - 
   - 
   - 

@@ -15,6 +15,10 @@ public class player : MonoBehaviour
     private GameObject dashObj;
     public GameObject body;
     public GameObject enemy;
+    public GameObject tentacle;
+    public GameObject hand;
+    public GameObject rib;
+    public GameObject eyeball;
     public float dashCD;
     private float DashCD = 0;
     public AudioSource JumpMusic;
@@ -150,7 +154,7 @@ public class player : MonoBehaviour
     }
     IEnumerator EnableCollider()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
         transform.GetComponent<PolygonCollider2D>().enabled = true;
 
     }
@@ -160,7 +164,7 @@ public class player : MonoBehaviour
         anim.SetBool("idel", false);
         if (anim.GetBool("jumping") && rb.velocity.y <= 0)
         {
-            rb.gravityScale = 1.44f;
+            rb.gravityScale = 1.2f;
             anim.SetBool("jumping", false);
             anim.SetBool("falling", true);
         }
@@ -172,7 +176,8 @@ public class player : MonoBehaviour
         }
         else   if (anim.GetBool("onGround"))
         {
-           AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
+            SoundMananger.instance.PlayerFall();
+            AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.2f)
             {
                 anim.SetBool("onGround", false);
@@ -217,7 +222,6 @@ public class player : MonoBehaviour
                 isDashing = true;
                 startDashTimer = dashTime;
                 DashCD = dashCD;
-                SoundMananger.instance.PlayerDash();//音效
             }
         }
         else
@@ -240,10 +244,10 @@ public class player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && useDefendTime <= 0 && canDefend)
         {
+            SoundMananger.instance.PlayerShield();
             isDefend = true;
             transform.GetChild(4).gameObject.SetActive(true);
             useDefendTime = 10f;
-            SoundMananger.instance.PlayerDefend();//音效
         }
     }
     void Suspend() //悬浮
@@ -253,7 +257,6 @@ public class player : MonoBehaviour
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
             hideTimer = Time.time + suspendTime;//经过悬浮时间后
-            SoundMananger.instance.PlayerSuspend();//音效
 
         }
         if (Time.time >= hideTimer)
@@ -277,7 +280,7 @@ public class player : MonoBehaviour
                 {
                     isHurt = true;
                     anim.SetBool("hurt", true);
-                    if (collision.gameObject.layer == 11)
+                    if (collision.gameObject.layer == 11&&y.repel!=0)
                     {
                         isEnable = true;
                         rb.velocity = new Vector2(y.repel, rb.velocity.y);
@@ -286,6 +289,10 @@ public class player : MonoBehaviour
                     
                     beHurtTime = 0f;
                     x.DamagePlayer(y.damage);
+                    if (y.health <= 0)
+                    {
+                        DashCD = 0;
+                    }
                     SoundMananger.instance.PlayerHurt();//音效
                 }
             }
@@ -294,18 +301,22 @@ public class player : MonoBehaviour
        //能力解锁
        if (collision.gameObject.CompareTag("Tentacle"))
         {
+            tentacle.SetActive(true);
             canJump = true;
         }
         if (collision.gameObject.CompareTag("hand"))
         {
+            hand.SetActive(true);
             canDefend = true;
         }
         if (collision.gameObject.CompareTag("rib"))
         {
+            rib.SetActive(true);
             can_Suspend = true;
         }
         if (collision.gameObject.CompareTag("eyeball"))
         {
+            eyeball.SetActive(true);
             canDash = true;
         }
 

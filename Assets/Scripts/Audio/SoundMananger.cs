@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class SoundMananger : MonoBehaviour
 {
-    public static SoundMananger instance;//µ¥Àý
+    public static SoundMananger instance;//ï¿½ï¿½ï¿½ï¿½
     public AudioSource audioSource;
     [SerializeField]
-    private AudioClip playerJump, playerHurt, playerDash, playerDefend, playerSuspend, playerAttack, 
-        enemyHurt, enemyAttack;
+    private AudioClip playerJump, playerHurt, playerAttack, playerDevour, playerFall, playerDeath, playerResurrect, playerShield;
 
     private void Awake()
     {
@@ -27,39 +26,35 @@ public class SoundMananger : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PlayerDash()
-    {
-        audioSource.clip = playerDash;
-        audioSource.Play();
-    }
-
-    public void PlayerSuspend()
-    {
-        audioSource.clip = playerSuspend;
-        audioSource.Play();
-    }
-
     public void PlayerAttack()
     {
         audioSource.clip = playerAttack;
         audioSource.Play();
     }
-
-    public void PlayerDefend()
+    public void PlayerFall()
     {
-        audioSource.clip = playerDefend;
+        audioSource.clip = playerFall;
+        audioSource.Play();
+    }
+    public void PlayerDeath()
+    {
+        audioSource.clip = playerDeath;
+        audioSource.Play();
+    }
+    public void PlayerResurrect()
+    {
+        audioSource.clip = playerResurrect;
+        audioSource.Play();
+    }
+    public void PlayerShield()
+    {
+        audioSource.clip = playerShield;
+        audioSource.Play();
+    }
+    public void PlayerDevour()
+    {
+        audioSource.clip = playerDevour;
         audioSource.Play();
     }
 
-    public void EnemyHurt()
-    {
-        audioSource.clip = enemyHurt;
-        audioSource.Play();
-    }
-
-    public void EnemyAttack()
-    {
-        audioSource.clip = enemyAttack;
-        audioSource.Play();
-    }
 }

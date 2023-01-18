@@ -32,12 +32,10 @@ public class PatrolState : IState//Ñ²Âß×´Ì¬
         if (distance < 0 && Mathf.Abs(distance) <= parameter.radius && manager.transform.localScale.x < 0)//¹ÖÎïÔÚ×ó
         {
             manager.TransitionState(StateType.Chase);//×ª»»³É¹¥»÷×´Ì¬
-            SoundMananger.instance.EnemyAttack();
         }
         if (distance > 0 && distance <= parameter.radius && manager.transform.localScale.x > 0)//¹ÖÎïÔÚÓÒ
         {
             manager.TransitionState(StateType.Chase);//×ª»»³É¹¥»÷×´Ì¬
-            SoundMananger.instance.EnemyAttack();
         }
         if (manager.GetComponent<Enemy>().health < 0)
         {

@@ -7,8 +7,6 @@ using UnityEngine.Audio;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject help;
-    public AudioMixer audioMixer;
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
@@ -21,21 +19,4 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void SetVolume(float value)
-    {
-        audioMixer.SetFloat("MainVolume", value);
-    }
-    public void Help()
-    {
-        help.SetActive(true);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && help.activeSelf)
-        {
-            help.SetActive(false);
-        }
-        
-    }
 }
