@@ -12,14 +12,16 @@ public class MainMenu : MonoBehaviour
     public GameObject production;
     public AudioMixer audioMixer;
     public int hp = 99999;
+    public int hur=-1;
     public void PlayGame1()
     {
         hp = 4;
-        SceneManager.LoadScene(1);
+            SceneManager.LoadScene(1);
     }
     public void PlayGame2()
     {
-        SceneManager.LoadScene(1);
+            SceneManager.LoadScene(1);
+        
     }
     public void Transform2()
     {
@@ -72,5 +74,5 @@ public class MainMenu : MonoBehaviour
     {
         audioMixer.SetFloat("MainVolumn", value);
     }
-    
+
 }

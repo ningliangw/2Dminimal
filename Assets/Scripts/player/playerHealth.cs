@@ -15,12 +15,11 @@ public class playerHealth : MonoBehaviour
     private Renderer myRender;
     void Start()
     {
-        HP= GameObject.Find("54321").GetComponent<transform>().hp;
+        HP = GameObject.Find("54321").GetComponent<transform>().hp;
         maxHP = HP;
+        Destroy(GameObject.Find("54321"));
         myRender = GetComponent<Renderer>();
-        
     }
-
     // Update is called once per frame
     void Update()
     {

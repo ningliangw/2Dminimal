@@ -217,7 +217,6 @@ GameObject:
   - component: {fileID: 1136361672}
   - component: {fileID: 1136361671}
   - component: {fileID: 1136361670}
-  - component: {fileID: 1136361673}
   - component: {fileID: 1136361674}
   m_Layer: 0
   m_Name: 54321
@@ -310,24 +309,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1136361673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136361669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b0a9277963735543ae4128fcfd04fde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  help: {fileID: 0}
-  start: {fileID: 0}
-  setup: {fileID: 0}
-  production: {fileID: 0}
-  audioMixer: {fileID: 0}
-  hp: 99999
 --- !u!114 &1136361674
 MonoBehaviour:
   m_ObjectHideFlags: 0
