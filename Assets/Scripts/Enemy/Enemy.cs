@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     private Color originalColor;
     private bool isdied = false;
     public GameObject getCollection;
+    private int cnt = 0;
 
     void Start()
     {
@@ -38,10 +39,20 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+
+        if (cnt > 0)
+        {
+            cnt--;
+        }
         Isdie();
     }
     public void TakeDamage(int damage)
     {
+        if (cnt > 0)
+        {
+            return;
+        }
+        cnt = 20;
         GameController.camShake.Shake();
         if (health - damage >= 0)
         {
