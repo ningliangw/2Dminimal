@@ -26,6 +26,11 @@ public class PauseMenu : MonoBehaviour
         yield return new WaitForSeconds(0.2f);//—” ±
         GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().enabled = true;
     }
+
+    public void end()
+    {
+        pauseMenu.SetActive(false);
+    }
     public void ReturnMainMenu()
     {
         SceneManager.LoadScene(0);
