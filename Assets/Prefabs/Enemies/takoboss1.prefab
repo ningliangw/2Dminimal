@@ -363,12 +363,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!114 &7953334535313540298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,8 +383,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334535419225904
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,12 +528,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334535419225907
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -759,8 +766,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334535765608846
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,12 +911,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334535765608841
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1137,8 +1149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334535782627266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,12 +1294,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334535782627277
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1514,8 +1531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536024160540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,12 +1899,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!114 &7953334536024160542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1897,8 +1919,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536133793268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,12 +2064,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536133793271
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2275,8 +2302,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536228014665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,12 +2670,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!114 &7953334536228014667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2658,8 +2690,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536254718360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2800,12 +2835,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536254718363
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3037,8 +3074,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536264261184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,12 +3219,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536264261187
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3415,8 +3457,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536285118212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3557,12 +3602,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536285118215
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3793,8 +3840,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536337230332
 GameObject:
   m_ObjectHideFlags: 0
@@ -3935,12 +3985,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536337230335
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4171,8 +4223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536356278090
 GameObject:
   m_ObjectHideFlags: 0
@@ -4313,12 +4368,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536356278101
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4549,8 +4606,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536357748406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4691,12 +4751,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536357748401
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4927,8 +4989,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536442254912
 GameObject:
   m_ObjectHideFlags: 0
@@ -5069,12 +5134,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536442254915
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5305,8 +5372,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536461816378
 GameObject:
   m_ObjectHideFlags: 0
@@ -5670,12 +5740,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!114 &7953334536461816324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5688,8 +5760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536888345939
 GameObject:
   m_ObjectHideFlags: 0
@@ -5830,12 +5905,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536888345950
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6066,8 +6143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334536976705966
 GameObject:
   m_ObjectHideFlags: 0
@@ -6208,12 +6288,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334536976705961
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6445,8 +6527,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334537089121141
 GameObject:
   m_ObjectHideFlags: 0
@@ -6587,12 +6672,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!60 &7953334537089121136
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6823,8 +6910,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
 --- !u!1 &7953334537212543953
 GameObject:
   m_ObjectHideFlags: 0
@@ -7123,12 +7213,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 30
   damage: 999
-  score: 0
   DieTime: 1
   flashTime: 0.1
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!114 &7953334537212543954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7144,7 +7236,6 @@ MonoBehaviour:
   distancenow: 24
   attackMusic: {fileID: 0}
   waitTime: 2
-  startTime: 0
   temptime: 2
 --- !u!1 &7953334537221684690
 GameObject:
@@ -7509,12 +7600,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 0}
+  hurtAudio: {fileID: 0}
   health: 999
   damage: 999
-  score: 0
   DieTime: 0
   flashTime: 0
   HaveTaken: 0
+  repel: 0
+  getCollection: {fileID: 0}
 --- !u!114 &7953334537221684700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7527,5 +7620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421939988cb22243872f734cf8ad606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMusic: {fileID: 0}
+  attackAudio: {fileID: 0}
+  distancenow: 0
+  haveTaken: 0
   time: 0
+  times: 0
