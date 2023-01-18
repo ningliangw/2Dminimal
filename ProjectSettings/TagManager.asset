@@ -78,3 +78,6 @@ TagManager:
   - name: prop
     uniqueID: 2230678607
     locked: 0
+  - name: cg
+    uniqueID: 4036707545
+    locked: 0
