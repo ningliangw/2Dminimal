@@ -40,10 +40,10 @@ public class playerHealth : MonoBehaviour
         if (HP <= 0)
         {
             isdied = true;
-            health.SetActive(true);
             SoundMananger.instance.PlayerDeath();
             Invoke("Killer", DieTime);
-            
+            health.SetActive(true);
+
         }
         else
         {
@@ -67,9 +67,9 @@ public class playerHealth : MonoBehaviour
     void Killer()
     {
         transform.position = GameObject.FindGameObjectWithTag("player").GetComponent<player>().respawnPosition;
-        HP = maxHP;
-        health.SetActive(false);
+        HP = 5;
         SoundMananger.instance.PlayerResurrect();
+        health.SetActive(false);
     }
     void BlinkPlayer(int numBlinks, float seconds)
     {
