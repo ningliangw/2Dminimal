@@ -25,7 +25,7 @@ public class player : MonoBehaviour
     public Vector2 respawnPosition;//复活点
     public float playerSpeed = 4f;
     public float jumpforce;
-    public float dashSpeed;
+    private float dashSpeed;
     public float beHurtTime;
     public float dashTime;
     private int canSuspend = 0;//悬浮判断
@@ -36,7 +36,7 @@ public class player : MonoBehaviour
     public float useDefendTime = 0f;
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
-    public bool isDefend = false;//判断是否无敌
+    private bool isDefend = false;//判断是否无敌
     private bool canJump = false;//判断能否跳跃
     private bool canDefend = false;//判断是否能使用护盾
     private bool can_Suspend = false;//判断能否悬浮
