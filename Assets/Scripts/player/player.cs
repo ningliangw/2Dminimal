@@ -15,13 +15,19 @@ public class player : MonoBehaviour
     private GameObject dashObj;
     public GameObject body;
     public GameObject enemy;
+    public GameObject tentacle;
+    public GameObject hand;
+    public GameObject rib;
+    public GameObject eyeball;
+    public float dashCD;
+    private float DashCD = 0;
     public AudioSource JumpMusic;
+    public Vector2 respawnPosition;//复活点
     public float playerSpeed = 4f;
     public float jumpforce;
-    public float dashSpeed;
+    private float dashSpeed;
     public float beHurtTime;
     public float dashTime;
-    public int collectionsget = 0;
     private int canSuspend = 0;//悬浮判断
     private float hideTimer = 0f;//计时器
     private float suspendTime = 0.5f;//悬浮时间
@@ -30,32 +36,45 @@ public class player : MonoBehaviour
     public float useDefendTime = 0f;
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
-    public bool isDefend = false;//判断是否无敌
+    private bool isDefend = false;//判断是否无敌
+    private bool canJump = false;//判断能否跳跃
+    private bool canDefend = false;//判断是否能使用护盾
+    private bool can_Suspend = false;//判断能否悬浮
+    private bool canDash = false;//判断能否冲刺
+    private bool isEnable = false;
     private float jumpPreinput = 0f;
+    private bool istouchingground = false;
+    private CapsuleCollider2D cap;
     private bool isDashing = false;//判断是否处于冲刺状态
 
 
     private float facedirection;
     void Start()
     {
+        cap = GetComponent<CapsuleCollider2D>();
         dashObj = transform.GetChild(1).gameObject;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         Feet = GetComponent<BoxCollider2D>();
         playerPS = GameObject.FindGameObjectWithTag("Player").GetComponent<ParticleSystem>();
+        respawnPosition = transform.position;//游戏刚开始时，玩家的重生点，就是当前的初始位置点
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isDefend)
+        transform.localRotation = new Quaternion(0, 0, 0, 0);
+        if (!isDefend&&!isEnable)
         {
             Movement();
             Dash();
         }
+        if (!isEnable)
+        {
             Suspend();
-        Defend();
+            Defend();
+        }
         falljudge();
         hurtjudge();
     }
@@ -64,6 +83,7 @@ public class player : MonoBehaviour
     private void FixedUpdate()//固定刷新率。0.02s刷新一次,无敌时间，冷却时间，预输入部分
     {
         if (jumpPreinput > 0.08f) { jumpPreinput -= 0.02f; }
+        if (DashCD > 0f) { DashCD -= 0.02f; }
         beHurtTime += 0.02f;
         if (useDefendTime > 0f)
         {
@@ -82,7 +102,6 @@ public class player : MonoBehaviour
     }
     void Movement()
     {
-        transform.localRotation = new Quaternion(0, 0, 0, 0);
         float horizontalmove = Input.GetAxis("Horizontal");
         facedirection = Input.GetAxisRaw("Horizontal");
 
@@ -108,22 +127,48 @@ public class player : MonoBehaviour
             rb.velocity = new Vector2(horizontalmove * playerSpeed, rb.velocity.y);
         }
         isGround = Feet.IsTouchingLayers(LayerMask.GetMask("ground"));
-        if (Input.GetButtonDown("Jump"))//跳跃
+        istouchingground = cap.IsTouchingLayers(LayerMask.GetMask("ground"));
+        if (istouchingground)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        if (Input.GetButtonDown("Jump")/* && canJump*/)//跳跃
         {
             jumpPreinput = 0.18f;
         }
         if (jumpPreinput > 0.1f && isGround)
         {
+            rb.gravityScale = 1f;
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
             PPS();
             anim.SetBool("jumping", true);
             JumpMusic.Play();
+            SoundMananger.instance.PlayerJump();//音效
         }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1),
+                              Mathf.Infinity, LayerMask.GetMask("ground"));
+            if (hit.collider.CompareTag("platform"))//检测到平台
+            {
+                transform.GetComponent<PolygonCollider2D>().enabled = false;
+                StartCoroutine(EnableCollider());
+
+            }
+        }
+
     }
+    IEnumerator EnableCollider()
+    {
+        yield return new WaitForSeconds(0.5f);
+        transform.GetComponent<PolygonCollider2D>().enabled = true;
+
+    }
+
     void falljudge()
     {
         anim.SetBool("idel", false);
-        if (anim.GetBool("jumping") && rb.velocity.y <= 0)
+        if (anim.GetBool("jumping") && rb.velocity.y <= 1.2)
         {
             rb.gravityScale = 1.44f;
             anim.SetBool("jumping", false);
@@ -137,7 +182,8 @@ public class player : MonoBehaviour
         }
         else   if (anim.GetBool("onGround"))
         {
-           AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
+            SoundMananger.instance.PlayerFall();
+            AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.2f)
             {
                 anim.SetBool("onGround", false);
@@ -170,17 +216,18 @@ public class player : MonoBehaviour
     }
     void Dash()
     {
-        if (rb.velocity.y > jumpforce &&isDashing)
+        if (rb.velocity.y > jumpforce &&isDashing && canDash)
         {
-            rb.velocity = new Vector2(rb.velocity.x,0.5f* jumpforce);
+            rb.velocity = new Vector2(rb.velocity.x,0.2f* jumpforce);
         }
         if (!isDashing)
         {
-            if (Input.GetButtonDown("dash"))
+            if (Input.GetButtonDown("dash") && canDash&&DashCD<=0)
             {
                 dashObj.SetActive(true);
                 isDashing = true;
                 startDashTimer = dashTime;
+                DashCD = dashCD;
             }
         }
         else
@@ -201,8 +248,9 @@ public class player : MonoBehaviour
 
     void Defend()
     {
-        if (Input.GetMouseButtonDown(1) && useDefendTime <= 0)
+        if (Input.GetMouseButtonDown(1) && useDefendTime <= 0 && canDefend)
         {
+            SoundMananger.instance.PlayerShield();
             isDefend = true;
             transform.GetChild(4).gameObject.SetActive(true);
             useDefendTime = 10f;
@@ -210,7 +258,7 @@ public class player : MonoBehaviour
     }
     void Suspend() //悬浮
     {
-        if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1)
+        if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1 && can_Suspend)
         {
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
@@ -222,7 +270,10 @@ public class player : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.None;//解冻
         }
     }
-
+    void RecoveyEnable()
+    {
+        isEnable = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)//碰撞触发器
     {
        if (collision.gameObject.CompareTag("enemies")|| collision.gameObject.CompareTag("crycry"))
@@ -231,13 +282,60 @@ public class player : MonoBehaviour
             {
                 playerHealth x = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
                 Enemy y = collision.GetComponent<Enemy>();
-                isHurt = true;
-                anim.SetBool("hurt", true);
-                beHurtTime = 0f;
-                x.DamagePlayer(y.damage);
+                if (y.health > 0)
+                {
+                    isHurt = true;
+                    anim.SetBool("hurt", true);
+                    if (collision.gameObject.layer == 11&&y.repel!=0)
+                    {
+                        isEnable = true;
+                        rb.velocity = new Vector2(y.repel, rb.velocity.y);
+                        Invoke("RecoveyEnable", 2f);
+                    }
+                    
+                    beHurtTime = 0f;
+                    x.DamagePlayer(y.damage);
+                    if (y.health <= 0)
+                    {
+                        DashCD = 0;
+                    }
+                    SoundMananger.instance.PlayerHurt();//音效
+                }
             }
             
         }
+       //能力解锁
+       if (collision.gameObject.CompareTag("Tentacle"))
+        {
+            tentacle.SetActive(true);
+            canJump = true;
+        }
+        if (collision.gameObject.CompareTag("hand"))
+        {
+            hand.SetActive(true);
+            canDefend = true;
+        }
+        if (collision.gameObject.CompareTag("rib"))
+        {
+            rib.SetActive(true);
+            can_Suspend = true;
+        }
+        if (collision.gameObject.CompareTag("eyeball"))
+        {
+            eyeball.SetActive(true);
+            canDash = true;
+        }
 
+        //存档点
+        if (collision.gameObject.CompareTag("archivePoint"))
+        {
+            respawnPosition = collision.transform.position;
+        }
+
+        //bgm
+        if (collision.gameObject.CompareTag("bgm1")) Bgm.instance.Bgm1();
+        if (collision.gameObject.CompareTag("bgm2")) Bgm.instance.Bgm2();
+        if (collision.gameObject.CompareTag("bgm3")) Bgm.instance.Bgm3();
+        if (collision.gameObject.CompareTag("bgm4")) Bgm.instance.Bgm4();
     }
 }

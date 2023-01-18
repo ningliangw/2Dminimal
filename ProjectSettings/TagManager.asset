@@ -10,6 +10,19 @@ TagManager:
   - enemies
   - defend
   - crycry
+  - Tentacle
+  - hand
+  - rib
+  - eyeball
+  - traiy
+  - platform
+  - archivePoint
+  - finalboss
+  - deathLine
+  - bgm1
+  - bgm2
+  - bgm3
+  - bgm4
   layers:
   - Default
   - TransparentFX
@@ -19,11 +32,11 @@ TagManager:
   - UI
   - player
   - enemy
-  - 
-  - 
-  - 
-  - 
-  - 
+  - enemtattack
+  - prop
+  - triggerBox
+  - traries
+  - finalboss
   - 
   - 
   - 
@@ -61,4 +74,7 @@ TagManager:
     locked: 0
   - name: enemy
     uniqueID: 1199571271
+    locked: 0
+  - name: prop
+    uniqueID: 2230678607
     locked: 0

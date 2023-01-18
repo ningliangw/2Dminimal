@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerHealth : MonoBehaviour
 {
+    public GameObject health;
     public float DieTime;
     public int HP;
     public int Blinks;
@@ -15,6 +16,7 @@ public class playerHealth : MonoBehaviour
     {
         maxHP = HP;
         myRender = GetComponent<Renderer>();
+        
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class playerHealth : MonoBehaviour
     {
         if (HP - damage >= 0)
         {
+            SoundMananger.instance.PlayerHurt();
             HP -= damage;
         }
         else
@@ -34,7 +37,10 @@ public class playerHealth : MonoBehaviour
         if (HP <= 0)
         {
             isdied = true;
+            health.SetActive(true);
+            SoundMananger.instance.PlayerDeath();
             Invoke("Killer", DieTime);
+            
         }
         else
         {
@@ -57,7 +63,10 @@ public class playerHealth : MonoBehaviour
     }
     void Killer()
     {
-        Destroy(gameObject);
+        transform.position = GameObject.FindGameObjectWithTag("player").GetComponent<player>().respawnPosition;
+        HP = maxHP;
+        health.SetActive(false);
+        SoundMananger.instance.PlayerResurrect();
     }
     void BlinkPlayer(int numBlinks, float seconds)
     {
@@ -71,5 +80,14 @@ public class playerHealth : MonoBehaviour
             yield return new WaitForSeconds(seconds);
         }
         myRender.enabled = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //掉落死亡
+        if (collision.gameObject.CompareTag("deathLine"))
+        {
+            Killer();
+        }
     }
 }

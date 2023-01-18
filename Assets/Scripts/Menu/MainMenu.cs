@@ -1,15 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject help;
-    public void PlayGame()
+    public GameObject start;
+    public GameObject setup;
+    public GameObject production;
+    public AudioMixer audioMixer;
+    public void PlayGame1()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void PlayGame2()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     // Start is called before the first frame update
     public void QuitGame()
@@ -17,16 +25,42 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void Help()
+    public void OpenHelp()
     {
         help.SetActive(true);
     }
 
-    private void Update()
+    public void CloseHelp()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            help.SetActive(false);
-        }
+        help.SetActive(false);
     }
+    public void OpenStart()
+    {
+        start.SetActive(true);
+    }
+    public void CloseStart()
+    {
+        start.SetActive(false);
+    }
+    public void OpenSetup()
+    {
+        setup.SetActive(true);
+    }
+    public void CloseSetup()
+    {
+        setup.SetActive(false);
+    }
+    public void OpenProduction()
+    {
+        production.SetActive(true);
+    }
+    public void CloseProduction()
+    {
+        production.SetActive(false);
+    }
+    public void SetVolumn(float value)
+    {
+        audioMixer.SetFloat("MainVolumn", value);
+    }
+    
 }

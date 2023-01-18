@@ -9,26 +9,27 @@ public class Enemy : MonoBehaviour
     private Animator anim;
    // public GameObject sceneTransform;
     public AudioSource deathAudio;
+    public AudioSource hurtAudio;
     public int health;
     public int damage;
-    public int score;
     public float DieTime;
     public float flashTime;
     public bool HaveTaken = false;
-
+    public float repel;
     private Rigidbody2D rb;
     private Transform playertransform;
     private playerHealth playerHealth;
     private SpriteRenderer sr;
     private Color originalColor;
-
     private bool isdied = false;
+    public GameObject getCollection;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         deathAudio = GetComponent<AudioSource>();
+        hurtAudio = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
         playertransform = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
@@ -46,9 +47,12 @@ public class Enemy : MonoBehaviour
         {
             health -= damage;
             FlashColor(flashTime);
+            hurtAudio.Play();
+
         }
         else if (health <= 0 && !HaveTaken)
         {
+            transform.GetComponent<FSM>().enabled = false;
             health = 0;
             isdied = true;
             Isdie();
@@ -58,20 +62,26 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0 && !HaveTaken)
         {
+            if (getCollection != null)
+            {
+                getCollection.SetActive(true);
+            }
+
             rb.velocity = new Vector2(0, 0);
             HaveTaken = true;
-       //     deathAudio.Play();
+            anim.SetTrigger("die");
+            //     deathAudio.Play();
             Invoke("Killer", DieTime);//
             player x = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
             playerHealth z = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
             z.HP = 3;
             GameObject.FindGameObjectWithTag("player").GetComponent<Animator>().SetTrigger("devour");
             GameObject.FindGameObjectWithTag("player").GetComponent<Animator>().SetBool("isdevouring", true);
-            x.collectionsget += score;
-            int y = x.collectionsget;
-            if (y > 27)
+            deathAudio.Play();
+            SoundMananger.instance.PlayerDevour();
+            if (transform.GetChild(0) != null)
             {
-                //            sceneTransform.GetComponent<scenetransform>().enabled = true;
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }
@@ -89,5 +99,13 @@ public class Enemy : MonoBehaviour
     void ResetColor()
     {
         sr.color = originalColor;
+    }
+    IEnumerator Waitfortime()
+    {
+        yield return new WaitForSeconds(this.GetComponentInParent<EnemyBoss>().waitTime);//延时
+    }
+    void WaitWait()
+    {
+    
     }
 }
