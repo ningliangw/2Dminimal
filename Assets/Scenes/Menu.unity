@@ -1048,6 +1048,7 @@ MonoBehaviour:
   setup: {fileID: 177661807}
   production: {fileID: 375211779}
   audioMixer: {fileID: 24100000, guid: 6ec5d782ff278ea419cb75f076a25545, type: 2}
+  hp: 99999
 --- !u!114 &763055197
 MonoBehaviour:
   m_ObjectHideFlags: 0

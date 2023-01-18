@@ -11,16 +11,26 @@ public class MainMenu : MonoBehaviour
     public GameObject setup;
     public GameObject production;
     public AudioMixer audioMixer;
+    public int hp = 99999;
     public void PlayGame1()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        hp = 4;
+        SceneManager.LoadScene(1);
     }
     public void PlayGame2()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
-    // Start is called before the first frame update
-    public void QuitGame()
+    public void Transform2()
+    {
+        SceneManager.LoadScene(2);
+    }
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
+        // Start is called before the first frame update
+        public void QuitGame()
     {
         Application.Quit();
     }
