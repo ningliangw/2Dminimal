@@ -10,8 +10,7 @@ public class playerAttack : MonoBehaviour
     public float startTime;
     public Transform target;
 
-    private bool canAttack;//ÄÜ·ñ¹¥»÷
-    private Animator anim;
+    public Animator anim;
     private PolygonCollider2D coll2D;
     void Start()
     {
