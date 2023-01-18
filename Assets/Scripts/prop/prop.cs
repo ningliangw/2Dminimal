@@ -14,6 +14,10 @@ public class prop : MonoBehaviour
     public GameObject eyeball2;
     public GameObject spine;
     public GameObject vertebra;
+    public GameObject tentacle;
+    public GameObject hand;
+    public GameObject rib;
+    public GameObject eyeball;
 
     public void OpenDiary1()
     {
@@ -133,7 +137,58 @@ public class prop : MonoBehaviour
         StartCoroutine(Close());
         Time.timeScale = 1f;
     }
-
+    public void OpenTentacle()
+    {
+        tentacle.SetActive(true);
+        GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().anim.SetBool("isattacking", false);
+        GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().enabled = false;
+        Time.timeScale = 0f;
+    }
+    public void CloseTentacle()
+    {
+        tentacle.SetActive(false);
+        StartCoroutine(Close());
+        Time.timeScale = 1f;
+    }
+    public void OpenHand()
+    {
+        hand.SetActive(true);
+        GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().anim.SetBool("isattacking", false);
+        GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().enabled = false;
+        Time.timeScale = 0f;
+    }
+    public void CloseHand()
+    {
+        hand.SetActive(false);
+        StartCoroutine(Close());
+        Time.timeScale = 1f;
+    }
+    public void OpenRib()
+    {
+        rib.SetActive(true);
+        GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().anim.SetBool("isattacking", false);
+        GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().enabled = false;
+        Time.timeScale = 0f;
+    }
+    public void CloseRib()
+    {
+        rib.SetActive(false);
+        StartCoroutine(Close());
+        Time.timeScale = 1f;
+    }
+    public void OpenEyeball()
+    {
+        eyeball.SetActive(true);
+        GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().anim.SetBool("isattacking", false);
+        GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().enabled = false;
+        Time.timeScale = 0f;
+    }
+    public void CloseEyeball()
+    {
+        eyeball.SetActive(false);
+        StartCoroutine(Close());
+        Time.timeScale = 1f;
+    }
     IEnumerator Close()
     {
         yield return new WaitForSeconds(0.2f);//—” ±
