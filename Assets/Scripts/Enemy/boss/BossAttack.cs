@@ -10,7 +10,7 @@ public class BossAttack : MonoBehaviour
     public float distancenow;//距离
     private Transform playertransform;//player的坐标
     public bool haveTaken = false;
-    public float Time;
+    public float time;
     public int times;
     void Start()
     {
@@ -23,11 +23,11 @@ public class BossAttack : MonoBehaviour
         if (playertransform != null && !haveTaken&&this.tag=="traiy")
         {
             float distance = Mathf.Abs(transform.position.x - playertransform.position.x);//玩家和敌人的距离。为一个
-            if (distance <= distancenow)//玩家进入巡逻
+            if (distance <= distancenow && Mathf.Abs(transform.position.y - playertransform.position.y)<=50)//玩家进入巡逻
             {
                 haveTaken = true;
-                attackAudio.Play();
                 StartCoroutine(Active());
+                attackAudio.Play();
             }
         }
     }
@@ -37,7 +37,7 @@ public class BossAttack : MonoBehaviour
         for (int i = 1; i <= times; i++)
         {
             transform.GetChild(0).gameObject.SetActive(true);
-            yield return new WaitForSeconds(Time);
+            yield return new WaitForSeconds(time);
             transform.GetChild(0).gameObject.SetActive(false);
         }
     }

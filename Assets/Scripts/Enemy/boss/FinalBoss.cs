@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class FinalBoss : MonoBehaviour
 {
     public float distancenow;//距离
-    public AudioSource attackMusic;//音效
+    public AudioSource wake;//音效
     public float waitTime;
     public float startTime;
     public float tempTime;
@@ -42,9 +42,9 @@ public class FinalBoss : MonoBehaviour
             float distance = Mathf.Abs(transform.position.x - playertransform.position.x);//玩家和敌人的距离。
             if (distance <= distancenow)//玩家进入巡逻半径
             {
-                // attackMusic.Play();
                 haveTaken = true;
                 StartCoroutine(Round2());
+                wake.Play();
             }
         }
     }
