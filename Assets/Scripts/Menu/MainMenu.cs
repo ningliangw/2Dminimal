@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 
 public class MainMenu : MonoBehaviour
@@ -11,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject start;
     public GameObject setup;
     public GameObject production;
+    public AudioMixer audioMixer;
     public void PlayGame1()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -57,6 +57,10 @@ public class MainMenu : MonoBehaviour
     public void CloseProduction()
     {
         production.SetActive(false);
+    }
+    public void SetVolumn(float value)
+    {
+        audioMixer.SetFloat("MainVolumn", value);
     }
     
 }

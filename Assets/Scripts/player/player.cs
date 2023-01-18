@@ -325,5 +325,11 @@ public class player : MonoBehaviour
         {
             respawnPosition = collision.transform.position;
         }
+
+        //bgm
+        if (collision.gameObject.CompareTag("bgm1")) Bgm.instance.Bgm1();
+        if (collision.gameObject.CompareTag("bgm2")) Bgm.instance.Bgm2();
+        if (collision.gameObject.CompareTag("bgm3")) Bgm.instance.Bgm3();
+        if (collision.gameObject.CompareTag("bgm4")) Bgm.instance.Bgm4();
     }
 }
