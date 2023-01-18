@@ -96,6 +96,7 @@ public class player : MonoBehaviour
             {
                 defendTime = 1f;
                 isDefend = false;
+                hand.transform.GetChild(0).gameObject.SetActive(false);
                 transform.GetChild(4).gameObject.SetActive(false);
             }
         }
@@ -134,6 +135,7 @@ public class player : MonoBehaviour
         }
         if (Input.GetButtonDown("Jump")/* && canJump*/)//跳跃
         {
+            tentacle.transform.GetChild(0).gameObject.SetActive(true);
             jumpPreinput = 0.18f;
         }
         if (jumpPreinput > 0.1f && isGround)
@@ -182,6 +184,7 @@ public class player : MonoBehaviour
         }
         else   if (anim.GetBool("onGround"))
         {
+            tentacle.transform.GetChild(0).gameObject.SetActive(false);
             SoundMananger.instance.PlayerFall();
             AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
             if (info.normalizedTime >= 0.2f)
@@ -224,6 +227,7 @@ public class player : MonoBehaviour
         {
             if (Input.GetButtonDown("dash") && canDash&&DashCD<=0)
             {
+                eyeball.transform.GetChild(0).gameObject.SetActive(true);
                 dashObj.SetActive(true);
                 isDashing = true;
                 startDashTimer = dashTime;
@@ -237,6 +241,7 @@ public class player : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x / dashSpeed, rb.velocity.y);
                 isDashing = false;
+                eyeball.transform.GetChild(0).gameObject.SetActive(false);
                 dashObj.SetActive(false);
             }
             else
@@ -250,6 +255,7 @@ public class player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && useDefendTime <= 0 && canDefend)
         {
+            hand.transform.GetChild(0).gameObject.SetActive(true);
             SoundMananger.instance.PlayerShield();
             isDefend = true;
             transform.GetChild(4).gameObject.SetActive(true);
@@ -260,6 +266,7 @@ public class player : MonoBehaviour
     {
         if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1 && can_Suspend)
         {
+            rib.transform.GetChild(0).gameObject.SetActive(true);
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
             hideTimer = Time.time + suspendTime;//经过悬浮时间后
@@ -268,6 +275,7 @@ public class player : MonoBehaviour
         if (Time.time >= hideTimer)
         {
             rb.constraints = RigidbodyConstraints2D.None;//解冻
+            rib.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
     void RecoveyEnable()
