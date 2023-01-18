@@ -16,7 +16,6 @@ public class playerHealth : MonoBehaviour
     void Start()
     {
         HP= GameObject.Find("54321").GetComponent<transform>().hp;
-        GameObject.Find("54321").SetActive(false);
         maxHP = HP;
         myRender = GetComponent<Renderer>();
         

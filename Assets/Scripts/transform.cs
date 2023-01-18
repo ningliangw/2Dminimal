@@ -13,8 +13,5 @@ public class transform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

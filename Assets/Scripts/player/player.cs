@@ -14,6 +14,7 @@ public class player : MonoBehaviour
     private ParticleSystem playerPS;
     private GameObject dashObj;
     public GameObject body;
+    public int score = 0;
     public GameObject enemy;
     public GameObject tentacle;
     public GameObject hand;
