@@ -43,14 +43,15 @@ public class player : MonoBehaviour
     private bool canDash = false;//ÅÐ¶ÏÄÜ·ñ³å´Ì
     private bool isEnable = false;
     private float jumpPreinput = 0f;
-    //private PolygonCollider2D poly;
+    private bool istouchingground = false;
+    private CapsuleCollider2D cap;
     private bool isDashing = false;//ÅÐ¶ÏÊÇ·ñ´¦ÓÚ³å´Ì×´Ì¬
 
 
     private float facedirection;
     void Start()
     {
-       // poly = GetComponent<PolygonCollider2D>();
+        cap = GetComponent<CapsuleCollider2D>();
         dashObj = transform.GetChild(1).gameObject;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -126,6 +127,11 @@ public class player : MonoBehaviour
             rb.velocity = new Vector2(horizontalmove * playerSpeed, rb.velocity.y);
         }
         isGround = Feet.IsTouchingLayers(LayerMask.GetMask("ground"));
+        istouchingground = cap.IsTouchingLayers(LayerMask.GetMask("ground"));
+        if (istouchingground)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
         if (Input.GetButtonDown("Jump")/* && canJump*/)//ÌøÔ¾
         {
             jumpPreinput = 0.18f;
