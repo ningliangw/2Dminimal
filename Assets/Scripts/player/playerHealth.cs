@@ -11,7 +11,7 @@ public class playerHealth : MonoBehaviour
     public int Blinks;
     public float Time;
     private bool isdied = false;
-    private int maxHP;
+    public int maxHP;
     private Renderer myRender;
     void Start()
     {
@@ -66,7 +66,7 @@ public class playerHealth : MonoBehaviour
     void Killer()
     {
         transform.position = GameObject.FindGameObjectWithTag("player").GetComponent<player>().respawnPosition;
-        HP = 5;
+        HP = maxHP;
         SoundMananger.instance.PlayerResurrect();
         GameObject.Find("Main Camera").transform.Find("death").gameObject.SetActive(false);
         health.SetActive(false);

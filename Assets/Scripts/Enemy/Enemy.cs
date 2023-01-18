@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
             Invoke("Killer", DieTime);//
             player x = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
             playerHealth z = GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>();
-            z.HP = 3;
+            z.HP = z.maxHP;
             GameObject.FindGameObjectWithTag("player").GetComponent<Animator>().SetTrigger("devour");
             GameObject.FindGameObjectWithTag("player").GetComponent<Animator>().SetBool("isdevouring", true);
             deathAudio.Play();

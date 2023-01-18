@@ -23,6 +23,7 @@ TagManager:
   - bgm2
   - bgm3
   - bgm4
+  - ui
   layers:
   - Default
   - TransparentFX

@@ -21,7 +21,6 @@ public class MainMenu : MonoBehaviour
     public void PlayGame2()
     {
             SceneManager.LoadScene(1);
-        
     }
     public void Transform2()
     {
