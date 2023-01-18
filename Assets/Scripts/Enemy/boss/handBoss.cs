@@ -12,6 +12,7 @@ public class handBoss : MonoBehaviour
     public float waitTime;
     public float startTime;
     public float temptime;
+    public float restTime;
     private GameObject child1, child0,child2, child3, child4;
     private bool haveTaken = false;
     private Transform playertransform;//playerµÄ×ø±ê
@@ -47,12 +48,14 @@ public class handBoss : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(true);
             this.transform.localPosition = new Vector3(703, this.transform.localPosition.y, this.transform.localPosition.z);
             yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(restTime);
             this.transform.localPosition = new Vector3(793, this.transform.localPosition.y, this.transform.localPosition.z);
             child1.SetActive(true);
             yield return new WaitForSeconds(waitTime);
             child2.SetActive(true);
             this.transform.localPosition = new Vector3(751, this.transform.localPosition.y, this.transform.localPosition.z);
             yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(restTime);
             this.transform.localPosition = new Vector3(793, this.transform.localPosition.y, this.transform.localPosition.z);
             child3.SetActive(true);
             yield return new WaitForSeconds(waitTime);
@@ -62,6 +65,7 @@ public class handBoss : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
+            yield return new WaitForSeconds(restTime);
             yield return new WaitForSeconds(temptime);
         }
     }

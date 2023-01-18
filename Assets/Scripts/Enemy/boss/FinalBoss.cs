@@ -64,7 +64,7 @@ public class FinalBoss : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }//1
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(restTime);
             for (int i = 3; i < 6; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
@@ -112,8 +112,7 @@ public class FinalBoss : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }//4
-            yield return new WaitForSeconds(restTime);
-            this.transform.localPosition = new Vector3(-129,-328, this.transform.localPosition.z);//下一阶段
+            this.transform.localPosition = new Vector3(-129,-328, this.transform.localPosition.z);//下一阶段2
             yield return new WaitForSeconds(waitTime);
             for (int i = 1; i <= 9; i++)
             {
@@ -185,7 +184,6 @@ public class FinalBoss : MonoBehaviour
             this.transform.localPosition = new Vector3(-129, -364, this.transform.localPosition.z);//下一阶段
             yield return new WaitForSeconds(Time3);
             this.transform.localPosition = new Vector3(-129, -382, this.transform.localPosition.z);//下一阶段
-            yield return new WaitForSeconds(waitTime);
 
             isChasing = true;
             yield return new WaitForSeconds(waitTime);
@@ -372,7 +370,6 @@ public class FinalBoss : MonoBehaviour
             this.transform.localPosition = new Vector3(-129, -364, this.transform.localPosition.z);//下一阶段
             yield return new WaitForSeconds(Time3);
             this.transform.localPosition = new Vector3(-129, -382, this.transform.localPosition.z);//下一阶段
-            yield return new WaitForSeconds(waitTime);
 
             isChasing = true;
             yield return new WaitForSeconds(waitTime);
