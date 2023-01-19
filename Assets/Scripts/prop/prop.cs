@@ -198,10 +198,10 @@ public class prop : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("player"))
         {
+            Destroy(gameObject);
             player x = GameObject.FindGameObjectWithTag("player").GetComponent<player>(); 
             x.score++;
-            Destroy(gameObject);
-            if (x.score < 12) button.SetActive(true);
+            if (x.score < 13) button.SetActive(true);
             else vertebra.SetActive(true);
             GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().anim.SetBool("isattacking", false);
             GameObject.FindGameObjectWithTag("player").transform.GetChild(2).GetComponent<playerAttack>().enabled = false;

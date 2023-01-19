@@ -267,7 +267,7 @@ public class player : MonoBehaviour
     {
         if (!isGround && Input.GetButtonDown("Suspend")&&canSuspend<=1 && can_Suspend)
         {
-            rib.transform.GetChild(0).gameObject.SetActive(true);
+            //rib.transform.GetChild(0).gameObject.SetActive(true);
             canSuspend +=1;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//冻结
             hideTimer = Time.time + suspendTime;//经过悬浮时间后
@@ -276,7 +276,7 @@ public class player : MonoBehaviour
         if (Time.time >= hideTimer)
         {
             rb.constraints = RigidbodyConstraints2D.None;//解冻
-            rib.transform.GetChild(0).gameObject.SetActive(false);
+            //rib.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
     void RecoveyEnable()
