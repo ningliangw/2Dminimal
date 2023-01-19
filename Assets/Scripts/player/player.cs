@@ -38,10 +38,10 @@ public class player : MonoBehaviour
     private bool isHurt = false;//判断是否受伤，默认是false
     private bool isGround = true;//判断是否处于地面
     private bool isDefend = false;//判断是否无敌
-    private bool canJump = true;//判断能否跳跃
-    private bool canDefend = true;//判断是否能使用护盾
-    private bool can_Suspend = true;//判断能否悬浮
-    private bool canDash = true;//判断能否冲刺
+    private bool canJump = false;//判断能否跳跃
+    private bool canDefend = false;//判断是否能使用护盾
+    private bool can_Suspend = false;//判断能否悬浮
+    private bool canDash = false;//判断能否冲刺
     private bool isEnable = false;
     private float jumpPreinput = 0f;
     private bool istouchingground = false;
@@ -78,6 +78,7 @@ public class player : MonoBehaviour
         }
         falljudge();
         hurtjudge();
+
     }
 
 
@@ -347,4 +348,7 @@ public class player : MonoBehaviour
         if (collision.gameObject.CompareTag("bgm3")) Bgm.instance.Bgm3();
         if (collision.gameObject.CompareTag("bgm4")) Bgm.instance.Bgm4();
     }
+
+
+
 }
