@@ -40,7 +40,7 @@ public class EnemyBoss : MonoBehaviour
 
     IEnumerator Round2()
     {
-        for (int q = 40; q > 0; q--)
+        for (int q = 80; q > 0; q--)
         {
             Round1();
             yield return new WaitForSeconds(waitTime);

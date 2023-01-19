@@ -53,7 +53,7 @@ public class FinalBoss : MonoBehaviour
     IEnumerator Round2()
     {
         yield return new WaitForSeconds(startTime);
-        for (int q = 40; q > 0; q--)
+        for (int q = 80; q > 0; q--)
         {
             for (int i = 0; i < 3; i++)
             {

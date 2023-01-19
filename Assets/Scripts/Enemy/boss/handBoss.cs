@@ -41,24 +41,34 @@ public class handBoss : MonoBehaviour
 
     IEnumerator Round2()
     {
-        for (int q = 40; q > 0; q--)
+        for (int q = 80; q > 0; q--)
         {//½øÈë·¶Î§->1->×ówait->23->ÖÐwait->45->ÓÒwait->×ó
 
             yield return new WaitForSeconds(startTime);
+            open();
+            yield return new WaitForSeconds(0.8f);
             transform.GetChild(0).gameObject.SetActive(true);
             this.transform.localPosition = new Vector3(703, this.transform.localPosition.y, this.transform.localPosition.z);
             yield return new WaitForSeconds(waitTime);
             yield return new WaitForSeconds(restTime);
             this.transform.localPosition = new Vector3(793, this.transform.localPosition.y, this.transform.localPosition.z);
+            open();
+            yield return new WaitForSeconds(0.8f);
             child1.SetActive(true);
             yield return new WaitForSeconds(waitTime);
+            open();
+            yield return new WaitForSeconds(0.8f);
             child2.SetActive(true);
             this.transform.localPosition = new Vector3(751, this.transform.localPosition.y, this.transform.localPosition.z);
             yield return new WaitForSeconds(waitTime);
             yield return new WaitForSeconds(restTime);
             this.transform.localPosition = new Vector3(793, this.transform.localPosition.y, this.transform.localPosition.z);
+            open();
+            yield return new WaitForSeconds(0.8f);
             child3.SetActive(true);
             yield return new WaitForSeconds(waitTime);
+            open();
+            yield return new WaitForSeconds(0.8f);
             child4.SetActive(true);
             yield return new WaitForSeconds(waitTime);
             for (int i = 0; i < 5; i++)
@@ -68,6 +78,14 @@ public class handBoss : MonoBehaviour
             yield return new WaitForSeconds(restTime);
             yield return new WaitForSeconds(temptime);
         }
+    }
+    void close()
+    {
+        this.GetComponent<Animator>().SetBool("attack", false);
+    }
+    void open()
+    {
+        this.GetComponent<Animator>().SetBool("attack", true);
     }
     IEnumerator Waitfortime(float time)
     {
